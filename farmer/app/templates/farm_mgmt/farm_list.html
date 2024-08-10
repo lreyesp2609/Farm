@@ -1,8 +1,9 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Farm Management - Farm List</title>
+    <title>{% trans "Farm Management - Farm List" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -89,19 +90,19 @@
 
 <body>
 
-    <h1>Farm Management - Farm List</h1>
+    <h1>{% trans "Farm Management - Farm List" %}</h1>
 
     <!-- Display a table of farms -->
     <table>
         <thead>
             <tr>
-                <th>Farm ID</th>
-                <th>Farmer</th>
-                <th>Farm Name</th>
-                <th>Location</th>
-                <th>Total Acres</th>
-                <th>Description</th>
-                <th>Actions</th>
+                <th>{% trans "Farm ID" %}</th>
+                <th>{% trans "Farmer" %}</th>
+                <th>{% trans "Farm Name" %}</th>
+                <th>{% trans "Location" %}</th>
+                <th>{% trans "Total Acres" %}</th>
+                <th>{% trans "Description" %}</th>
+                <th>{% trans "Actions" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -116,14 +117,14 @@
                 <td>{{ farm.description }}</td>
                 <td>
                     {% if farm.farm_id %}
-                        <a href="{% url 'app:view_farm' farm.farm_id %}">View Details</a>
-                        <a href="{% url 'app:edit_farm' farm.farm_id %}">Edit</a>
+                        <a href="{% url 'app:view_farm' farm.farm_id %}">{% trans "View Details" %}</a>
+                        <a href="{% url 'app:edit_farm' farm.farm_id %}">{% trans "Edit" %}</a>
                         <form method="post" action="{% url 'app:delete_farm' farm.farm_id %}" style="display: inline;">
                             {% csrf_token %}
-                            <button type="submit">Delete</button>
+                            <button type="submit">{% trans "Delete" %}</button>
                         </form>
                     {% else %}
-                        <span>Invalid farm ID</span>
+                        <span>{% trans "Invalid farm ID" %}</span>
                     {% endif %}
                 </td>
             </tr>
@@ -132,7 +133,7 @@
         </tbody>
     </table>
 
-    <a class="add-farm-link" href="{% url 'app:add_farm' %}">Add New Farm</a>
+    <a class="add-farm-link" href="{% url 'app:add_farm' %}">{% trans "Add New Farm" %}</a>
     
 </body>
 

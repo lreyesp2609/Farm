@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farmer Registration</title>
+    <title>{% trans "Farmer Registration" %}</title>
     <!-- Add your CSS links or styles here -->
     <style>
         body {
@@ -65,11 +66,11 @@
     </style>
 </head>
 <body>
-    <h2>Farmer Registration</h2>
+    <h2>{% trans "Farmer Registration" %}</h2>
     <form method="post" action="{% url 'app:register' %}">
         {% csrf_token %}
         {{ farmer_form.as_p }}
-        <button type="submit">Submit</button>
+        <button type="submit">{% trans "Submit" %}</button>
     </form>
 </body>
 </html>

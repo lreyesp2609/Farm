@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farm Details</title>
+    <title>{% trans "Farm Details" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -49,31 +50,31 @@
 </head>
 <body>
 
-    <h2>Farm Details</h2>
+    <h2>{% trans "Farm Details" %}</h2>
 
     <table border="1">
         <tr>
-            <th>Farm ID</th>
+            <th>{% trans "Farm ID" %}</th>
             <td>{{ farm.farm_id }}</td>
         </tr>
         <tr>
-            <th>Farmer</th>
+            <th>{% trans "Farmer" %}</th>
             <td>{{ farm.farmer.user.username }}</td>
         </tr>
         <tr>
-            <th>Farm Name</th>
+            <th>{% trans "Farm Name" %}</th>
             <td>{{ farm.farm_name }}</td>
         </tr>
         <tr>
-            <th>Location</th>
+            <th>{% trans "Location" %}</th>
             <td>{{ farm.location }}</td>
         </tr>
         <tr>
-            <th>Total Acres</th>
+            <th>{% trans "Total Acres" %}</th>
             <td>{{ farm.total_acres }}</td>
         </tr>
         <tr>
-            <th>Description</th>
+            <th>{% trans "Description" %}</th>
             <td>{{ farm.description }}</td>
         </tr>
     </table>

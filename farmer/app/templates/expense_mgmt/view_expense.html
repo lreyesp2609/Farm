@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Details</title>
+    <title>{% trans "Expense Details" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -64,28 +65,28 @@
 </head>
 <body>
 
-    <h2>Expense Details</h2>
+    <h2>{% trans "Expense Details" %}</h2>
 
     <table border="1">
         <tr>
-            <th>Expense ID</th>
+            <th>{% trans "Expense ID" %}</th>
             <td>{{ expense.expense_id }}</td>
         </tr>
         <tr>
-            <th>Type</th>
+            <th>{% trans "Type" %}</th>
             <td>{{ expense.expense_type }}</td>
         </tr>
         <tr>
-            <th>Amount</th>
+            <th>{% trans "Amount" %}</th>
             <td>{{ expense.amount }}</td>
         </tr>
         <tr>
-            <th>Description</th>
+            <th>{% trans "Description" %}</th>
             <td>{{ expense.description }}</td>
         </tr>
     </table>
 
-    <a class="back-link" href="{% url 'app:expense_list' %}">&lt; Back to Expense List</a>
+    <a class="back-link" href="{% url 'app:expense_list' %}">&lt; {% trans "Back to Expense List" %}</a>
 
 </body>
 </html>

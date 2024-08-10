@@ -1,11 +1,12 @@
 <!-- signup.html -->
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign Up</title>
+    <title>{% trans "Sign Up" %}</title>
 
     <!-- Add styles here -->
     <style>
@@ -88,11 +89,11 @@
     </style>
 </head>
 <body>
-    <h2>Sign Up</h2>
+    <h2>{% trans "Sign Up" %}</h2>
     <form method="post" action="{% url 'app:signup' %}">
         {% csrf_token %}
         {{ user_form.as_p }}
-        <button type="submit">Sign Up</button>
+        <button type="submit">{% trans "Sign Up" %}</button>
     </form>
 </body>
 </html>

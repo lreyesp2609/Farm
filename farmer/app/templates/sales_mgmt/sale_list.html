@@ -1,8 +1,9 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Sale List</title>
+    <title>{% trans "Sale List" %}</title>
     <style>
         /* Add your CSS styles here */
         body {
@@ -101,29 +102,29 @@
 
 <body>
 
-    <h1>Sale List</h1>
+    <h1>{% trans "Sale List" %}</h1>
     {% include 'sales_mgmt/messages.html' with class_name='hidden' %}
 
     {% if sales %}
     <div class="card-container">
         {% for sale in sales %}
             <div class="card">
-                <a href="{% url 'app:remove_sale' sale.id %}" class="remove-button">Remove</a>
+                <a href="{% url 'app:remove_sale' sale.id %}" class="remove-button">{% trans "Remove" %}</a>
                 <h3>{{ sale.product_name }}</h3>
-                <p><strong>Quantity(in Kgs,.):</strong> {{ sale.quantity }}</p>
-                <p><strong>Unit Price(in ₹/kg,.):</strong> {{ sale.unit_price }}</p>
-                <p><strong>Date(YYYY-MM-DD,.):</strong> {{ sale.date }}</p>
+                <p><strong>{% trans "Quantity(in Kgs,.)" %}:</strong> {{ sale.quantity }}</p>
+                <p><strong>{% trans "Unit Price(in ₹/kg,.)" %}:</strong> {{ sale.unit_price }}</p>
+                <p><strong>{% trans "Date" %}(YYYY-MM-DD,.):</strong> {{ sale.date }}</p>
                 {% if sale.image %}
                     <img src="{{ sale.image.url }}" alt="Product Image">
                 {% else %}
-                    <p>No Image</p>
+                    <p>{% trans "No Image" %}</p>
                 {% endif %}
-                <p><strong>Farm:</strong> {{ sale.farm.farm_name }}</p>
+                <p><strong>{% trans "Farm" %}:</strong> {{ sale.farm.farm_name }}</p>
             </div>
         {% endfor %}
     </div>
 {% else %}
-    <p>No sales data available.</p>
+    <p>{% trans "No sales data available." %}</p>
 {% endif %}
 </body>
 

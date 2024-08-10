@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crop Details</title>
+    <title>{% trans "Crop Details" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -52,35 +53,35 @@
 </head>
 <body>
 
-    <h2>Crop Details</h2>
+    <h2>{% trans "Crop Details" %}</h2>
 
     <table border="1">
         <tr>
-            <th>Crop ID</th>
+            <th>{% trans "Crop ID" %}</th>
             <td>{{ crop.crop_id }}</td>
         </tr>
         <tr>
-            <th>Farm</th>
+            <th>{% trans "Farm" %}</th>
             <td>{{ crop.farm.farm_name }}</td>
         </tr>
         <tr>
-            <th>Crop Name</th>
+            <th>{% trans "Crop Name" %}</th>
             <td>{{ crop.crop_name }}</td>
         </tr>
         <tr>
-            <th>Planting Date</th>
+            <th>{% trans "Planting Date" %}</th>
             <td>{{ crop.planting_date }}</td>
         </tr>
         <tr>
-            <th>Harvesting Date</th>
+            <th>{% trans "Harvesting Date" %}</th>
             <td>{{ crop.harvesting_date }}</td>
         </tr>
         <tr>
-            <th>Yield</th>
+            <th>{% trans "Yield" %}</th>
             <td>{{ crop.yield_amount }}</td>
         </tr>        
         <tr>
-            <th>Notes</th>
+            <th>{% trans "Notes" %}</th>
             <td>{{ crop.notes }}</td>
         </tr>
     </table>

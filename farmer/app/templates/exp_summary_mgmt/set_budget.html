@@ -1,8 +1,9 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
-    <title>Set Budget</title>
+    <title>{% trans "Set Budget" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -59,12 +60,12 @@
 
 <body>
 
-    <h1>Set Budget for {{ expense.description }}</h1>
+    <h1>{% trans "Set Budget for " %} {{ expense.description }}</h1>
 
     <form method="post" action="">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Set Budget</button>
+        <button type="submit">{% trans "Set Budget" %}</button>
     </form>
 
 </body>

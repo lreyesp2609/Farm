@@ -1,8 +1,9 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Expense Summary</title>
+    <title>{% trans "Expense Summary" %}</title>
     <!-- Include Chart.js library -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
@@ -28,15 +29,15 @@
 
     <div class="container">
 
-        <h1>Expense Summary</h1>
+        <h1>{% trans "Expense Summary" %}</h1>
 
         {% if user_has_expenses %}
             <!-- Add a link to the detailed reports page -->
-            <a href="{% url 'app:detailed_reports' %}">Detailed Expense Reports</a>
+            <a href="{% url 'app:detailed_reports' %}">{% trans "Detailed Expense Reports" %}</a>
 
             <!-- Display total expenses, average expenses, and other metrics -->
-            <p>Total Expenses: {{ total_expenses }}</p>
-            <p>Average Expenses: {{ average_expenses }}</p>
+            <p>{% trans "Total Expenses" %}: {{ total_expenses }}</p>
+            <p>{% trans "Average Expenses" %}: {{ average_expenses }}</p>
             <!-- Add other high-level metrics -->
 
             <!-- Bar chart for expenses by type -->
@@ -87,7 +88,7 @@
                 });
             </script>
         {% else %}
-            <p>No expenses have been entered yet.</p>
+            <p>{% trans "No expenses have been entered yet." %}</p>
         {% endif %}
 
     </div>

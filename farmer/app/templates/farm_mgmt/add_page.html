@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Farm Management - Add Farm</title>
+    <title>{% trans "Farm Management - Add Farm" %}</title>
     <style>
         body {
             max-width: 600px;
@@ -78,7 +79,7 @@
     </style>
 </head>
 <body>
-    <h2>Add Farm Details</h2>
+    <h2>{% trans "Add Farm Details" %}</h2>
 
     <form method="post" action="{% url 'app:add_farm' %}">
         {% csrf_token %}
@@ -86,7 +87,7 @@
         <!-- Display form errors -->
         {% if farm_form.errors %}
             <div class="alert">
-                <strong>Error(s):</strong>
+                <strong>{% trans "Error(s)" %}:</strong>
                 <ul>
                     {% for error in farm_form.errors %}
                         <li>{{ error }}</li>
@@ -96,7 +97,7 @@
         {% endif %}
 
         {{ farm_form.as_p }}
-        <button type="submit">Submit</button>
+        <button type="submit">{% trans "Submit" %}</button>
     </form>
 </body>
 </html>

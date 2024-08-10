@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Edit Crop Details</title>
+    <title>{% trans "Edit Crop Details" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -67,7 +68,7 @@
 </head>
 <body>
 
-    <h2>Edit Crop Details</h2>
+    <h2>{% trans "Edit Crop Details" %}</h2>
 
     <form method="post" action="{% url 'app:edit_crop' crop.crop_id %}">
         {% csrf_token %}
@@ -75,7 +76,7 @@
         <!-- Display form errors -->
         {% if crop_form.errors %}
             <div class="alert alert-danger">
-                <strong>Error(s):</strong>
+                <strong>{% trans "Error(s)" %}:</strong>
                 <ul>
                     {% for error in crop_form.errors %}
                         <li>{{ error }}</li>
@@ -85,7 +86,7 @@
         {% endif %}
 
         {{ crop_form.as_p }}
-        <button type="submit">Update</button>
+        <button type="submit">{% trans "Update" %}</button>
     </form>
 
 </body>

@@ -1,9 +1,10 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add Sale</title>
+    <title>{% trans "Add Sale" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -174,7 +175,7 @@
 </head>
 <body>
 
-    <h1>Add Sale</h1>
+    <h1>{% trans "Add Sale" %}</h1>
 
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
@@ -182,7 +183,7 @@
         <!-- Display form errors -->
         {% if form.errors %}
             <div class="alert">
-                <strong>Error(s):</strong>
+                <strong>{% trans "Error(s)" %}:</strong>
                 <ul>
                     {% for error in form.errors %}
                         <li>{{ error }}</li>
@@ -192,7 +193,7 @@
         {% endif %}
 
         {{ form.as_p }}
-        <button type="submit">Add Sale</button>
+        <button type="submit">{% trans "Add Sale" %}</button>
     </form>
 
 </body>

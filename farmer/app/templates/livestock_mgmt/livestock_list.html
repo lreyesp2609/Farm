@@ -1,7 +1,8 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Livestock Management - Livestock List</title>
+    <title>{% trans "Livestock Management - Livestock List" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -85,19 +86,19 @@
 </head>
 <body>
 
-<h1>Livestock Management - Livestock List</h1>
+<h1>{% trans "Livestock Management - Livestock List" %}</h1>
 
 <!-- Display a table of livestock -->
 <table>
     <thead>
         <tr>
-            <th>Livestock ID</th>
-            <th>Farm Name</th>
-            <th>Livestock Type</th>
-            <th>Quantity</th>
-            <th>Health Status</th>
-            <th>Notes</th>
-            <th>Actions</th>
+            <th>{% trans "Livestock ID" %}</th>
+            <th>{% trans "Farm Name" %}</th>
+            <th>{% trans "Livestock Type" %}</th>
+            <th>{% trans "Quantity" %}</th>
+            <th>{% trans "Health Status" %}</th>
+            <th>{% trans "Notes" %}</th>
+            <th>{% trans "Actions" %}</th>
         </tr>
     </thead>
     <tbody>
@@ -112,29 +113,29 @@
             <td>{{ livestock.notes }}</td>
             <td>
                 {% if livestock.livestock_id %}
-                    <a href="{% url 'app:view_livestock' livestock.livestock_id %}">View Details</a>
+                    <a href="{% url 'app:view_livestock' livestock.livestock_id %}">{% trans "View Details" %}</a>
                 {% else %}
                     <!-- Handle the case where livestock.livestock_id is empty -->
-                    <p>No details available</p>
+                    <p>{% trans "No details available" %}</p>
                 {% endif %}
                 
                 {% if livestock.livestock_id %}
                     <!-- Edit link to open the update form -->
-                    <a href="{% url 'app:edit_livestock' livestock.livestock_id %}">Edit</a>
+                    <a href="{% url 'app:edit_livestock' livestock.livestock_id %}">{% trans "Edit" %}</a>
                 {% else %}
                     <!-- Handle the case where livestock.livestock_id is empty for editing -->
-                    <p>No details available for editing</p>
+                    <p>{% trans "No details available for editing" %}</p>
                 {% endif %}
                 
                 {% if livestock.livestock_id %}
                     <!-- Delete Form within the same row -->
                     <form method="post" action="{% url 'app:delete_livestock' livestock.livestock_id %}" style="display: inline;">
                         {% csrf_token %}
-                        <button type="submit">Delete</button>
+                        <button type="submit">{% trans "Delete" %}</button>
                     </form>
                 {% else %}
                     <!-- Handle the case where livestock.livestock_id is empty for deletion -->
-                    <p>No details available for deletion</p>
+                    <p>{% trans "No details available for deletion" %}</p>
                 {% endif %}
             </td>
         </tr>
@@ -142,7 +143,7 @@
         {% endfor %}
     </tbody>
 </table>
-<a class="add-livestock-link" href="{% url 'app:add_livestock' %}">Add New Livestock</a>
+<a class="add-livestock-link" href="{% url 'app:add_livestock' %}">{% trans "Add New Livestock" %}</a>
 
 </body>
 </html>

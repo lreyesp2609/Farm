@@ -1,0 +1,628 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-08-09 23:52-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: .\app\templates\crop_mgmt\add_crop.html:7
+msgid "Crop Management - Add Crop"
+msgstr "Gestión de Cultivos - Agregar Cultivo"
+
+#: .\app\templates\crop_mgmt\add_crop.html:91
+msgid "Add Crop Details"
+msgstr "Agregar Detalles del Cultivo"
+
+#: .\app\templates\crop_mgmt\add_crop.html:99
+#: .\app\templates\crop_mgmt\edit_crop.html:79
+#: .\app\templates\expense_mgmt\add_expense.html:86
+#: .\app\templates\expense_mgmt\edit_expense.html:88
+#: .\app\templates\farm_mgmt\add_page.html:90
+#: .\app\templates\livestock_mgmt\add_livestock.html:99
+#: .\app\templates\livestock_mgmt\edit_livestock.html:89
+#: .\app\templates\sales_mgmt\add_sale.html:186
+msgid "Error(s)"
+msgstr "Error(es)"
+
+#: .\app\templates\crop_mgmt\add_crop.html:109
+#: .\app\templates\expense_mgmt\add_expense.html:123
+#: .\app\templates\farm_mgmt\add_page.html:100
+#: .\app\templates\livestock_mgmt\add_livestock.html:109
+#: .\app\templates\register.html:73
+msgid "Submit"
+msgstr "Enviar"
+
+#: .\app\templates\crop_mgmt\crop_list.html:6
+#: .\app\templates\crop_mgmt\crop_list.html:93
+#, fuzzy
+#| msgid "Manage Crops"
+msgid "Crop Management - Crop List"
+msgstr "Gestión de Cultivos - Lista de Cultivos"
+
+#: .\app\templates\crop_mgmt\crop_list.html:99
+#: .\app\templates\crop_mgmt\view_crop.html:60
+msgid "Crop ID"
+msgstr "ID del Cultivo"
+
+#: .\app\templates\crop_mgmt\crop_list.html:100
+#: .\app\templates\crop_mgmt\view_crop.html:68
+msgid "Crop Name"
+msgstr "Nombre del Cultivo"
+
+#: .\app\templates\crop_mgmt\crop_list.html:101
+#: .\app\templates\expense_mgmt\add_expense.html:97
+#: .\app\templates\expense_mgmt\expense_list.html:101
+#: .\app\templates\farm_mgmt\farm_list.html:101
+#: .\app\templates\farm_mgmt\view_farm.html:65
+#: .\app\templates\livestock_mgmt\livestock_list.html:96
+msgid "Farm Name"
+msgstr "Nombre de la Granja"
+
+#: .\app\templates\crop_mgmt\crop_list.html:102
+msgid "Plantation Date"
+msgstr "Fecha de Siembra"
+
+#: .\app\templates\crop_mgmt\crop_list.html:103
+msgid "Harvest Date"
+msgstr "Fecha de Cosecha"
+
+#: .\app\templates\crop_mgmt\crop_list.html:104
+#: .\app\templates\crop_mgmt\view_crop.html:80
+msgid "Yield"
+msgstr "Rendimiento"
+
+#: .\app\templates\crop_mgmt\crop_list.html:105
+#: .\app\templates\crop_mgmt\view_crop.html:84
+#: .\app\templates\livestock_mgmt\livestock_list.html:100
+#: .\app\templates\livestock_mgmt\view_livestock.html:77
+msgid "Notes"
+msgstr "Notas"
+
+#: .\app\templates\crop_mgmt\crop_list.html:106
+#: .\app\templates\expense_mgmt\expense_list.html:106
+#: .\app\templates\farm_mgmt\farm_list.html:105
+#: .\app\templates\livestock_mgmt\livestock_list.html:101
+msgid "Actions"
+msgstr "Acciones"
+
+#: .\app\templates\crop_mgmt\crop_list.html:122
+#: .\app\templates\expense_mgmt\expense_list.html:120
+#: .\app\templates\farm_mgmt\farm_list.html:120
+#: .\app\templates\livestock_mgmt\livestock_list.html:116
+#, fuzzy
+#| msgid "View Sales"
+msgid "View Details"
+msgstr "Ver Ventas"
+
+#: .\app\templates\crop_mgmt\crop_list.html:123
+#: .\app\templates\expense_mgmt\expense_list.html:121
+#: .\app\templates\farm_mgmt\farm_list.html:121
+#: .\app\templates\livestock_mgmt\livestock_list.html:124
+msgid "Edit"
+msgstr "Editar"
+
+#: .\app\templates\crop_mgmt\crop_list.html:126
+#: .\app\templates\expense_mgmt\delete_expense.html:16
+#: .\app\templates\farm_mgmt\farm_list.html:124
+#: .\app\templates\livestock_mgmt\livestock_list.html:134
+msgid "Delete"
+msgstr "Eliminar"
+
+#: .\app\templates\crop_mgmt\crop_list.html:130
+#: .\app\templates\livestock_mgmt\livestock_list.html:119
+msgid "No details available"
+msgstr "No hay detalles disponibles"
+
+#: .\app\templates\crop_mgmt\crop_list.html:139
+#, fuzzy
+#| msgid "View Crops"
+msgid "Add New Crop"
+msgstr "Ver Cultivos"
+
+#: .\app\templates\crop_mgmt\edit_crop.html:7
+#: .\app\templates\crop_mgmt\edit_crop.html:71
+msgid "Edit Crop Details"
+msgstr "Editar Detalles del Cultivo"
+
+#: .\app\templates\crop_mgmt\edit_crop.html:89
+#: .\app\templates\expense_mgmt\edit_expense.html:98
+#: .\app\templates\farm_mgmt\edit_farm.html:85
+#: .\app\templates\livestock_mgmt\edit_livestock.html:99
+msgid "Update"
+msgstr "Actualizar"
+
+#: .\app\templates\crop_mgmt\view_crop.html:7
+#: .\app\templates\crop_mgmt\view_crop.html:56
+msgid "Crop Details"
+msgstr "Detalles del Cultivo"
+
+#: .\app\templates\crop_mgmt\view_crop.html:64
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:115
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:142
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:88
+#: .\app\templates\livestock_mgmt\view_livestock.html:61
+#: .\app\templates\sales_mgmt\sale_list.html:122
+msgid "Farm"
+msgstr "Granja"
+
+#: .\app\templates\crop_mgmt\view_crop.html:72
+msgid "Planting Date"
+msgstr "Fecha de Siembra"
+
+#: .\app\templates\crop_mgmt\view_crop.html:76
+msgid "Harvesting Date"
+msgstr "Fecha de Cosecha"
+
+#: .\app\templates\dashboard.html:9
+msgid "Dashboard"
+msgstr "Panel de Control"
+
+#: .\app\templates\dashboard.html:209
+msgid "Welcome to Your Dashboard"
+msgstr "Bienvenido a tu Panel de Control"
+
+#: .\app\templates\dashboard.html:210
+msgid "This is where you can manage your farming activities."
+msgstr "Aquí es donde puedes gestionar tus actividades agrícolas."
+
+#: .\app\templates\dashboard.html:217 .\app\templates\dashboard.html:219
+#: .\app\templates\sales_mgmt\add_sale.html:7
+#: .\app\templates\sales_mgmt\add_sale.html:178
+#: .\app\templates\sales_mgmt\add_sale.html:196
+msgid "Add Sale"
+msgstr "Agregar Venta"
+
+#: .\app\templates\dashboard.html:222
+msgid "Register"
+msgstr "Registrar"
+
+#: .\app\templates\dashboard.html:225 .\app\templates\dashboard.html:227
+msgid "View Sales"
+msgstr "Ver Ventas"
+
+#: .\app\templates\dashboard.html:233
+msgid "Logout"
+msgstr "Cerrar sesión"
+
+#: .\app\templates\dashboard.html:247
+msgid "Summary"
+msgstr "Resumen"
+
+#: .\app\templates\dashboard.html:248
+msgid "Total Farms"
+msgstr "Total de Granjas"
+
+#: .\app\templates\dashboard.html:249
+msgid "Total Crops"
+msgstr "Total de Cultivos"
+
+#: .\app\templates\dashboard.html:250
+msgid "Total Livestock"
+msgstr "Total de Ganado"
+
+#: .\app\templates\dashboard.html:263
+msgid "Manage Farms"
+msgstr "Gestionar Granjas"
+
+#: .\app\templates\dashboard.html:267 .\app\templates\dashboard.html:269
+msgid "View Farms"
+msgstr "Ver Granjas"
+
+#: .\app\templates\dashboard.html:277
+msgid "Manage Crops"
+msgstr "Gestionar Cultivos"
+
+#: .\app\templates\dashboard.html:281 .\app\templates\dashboard.html:283
+msgid "View Crops"
+msgstr "Ver Cultivos"
+
+#: .\app\templates\dashboard.html:291
+msgid "Manage Livestock"
+msgstr "Gestionar Ganado"
+
+#: .\app\templates\dashboard.html:295 .\app\templates\dashboard.html:297
+msgid "View Livestock"
+msgstr "Ver Ganado"
+
+#: .\app\templates\dashboard.html:305
+msgid "Manage expense"
+msgstr "Gestionar gastos"
+
+#: .\app\templates\dashboard.html:309 .\app\templates\dashboard.html:311
+msgid "View expenses"
+msgstr "Ver gastos"
+
+#: .\app\templates\dashboard.html:321
+msgid "Manage summary"
+msgstr "Gestionar resumen"
+
+#: .\app\templates\dashboard.html:325 .\app\templates\dashboard.html:327
+msgid "View expense summary"
+msgstr "Ver resumen de gastos"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:8
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:103
+msgid "Expense Report"
+msgstr "Informe de Gastos"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:107
+#: .\app\templates\expense_mgmt\add_expense.html:104
+msgid "Expense Type"
+msgstr "Tipo de Gasto"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:123
+msgid "Start Date"
+msgstr "Fecha de Inicio"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:126
+msgid "End Date"
+msgstr "Fecha de Fin"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:129
+msgid "Generate Report"
+msgstr "Generar Informe"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:137
+msgid "ID"
+msgstr "ID"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:138
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:84
+#: .\app\templates\expense_mgmt\expense_list.html:103
+#: .\app\templates\sales_mgmt\sale_list.html:116
+msgid "Date"
+msgstr "Fecha"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:139
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:85
+#: .\app\templates\expense_mgmt\add_expense.html:114
+#: .\app\templates\expense_mgmt\expense_list.html:104
+#: .\app\templates\expense_mgmt\view_expense.html:80
+msgid "Amount"
+msgstr "Monto"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:140
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:86
+#: .\app\templates\expense_mgmt\expense_list.html:102
+#: .\app\templates\expense_mgmt\view_expense.html:76
+msgid "Type"
+msgstr "Tipo"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:141
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:87
+#: .\app\templates\expense_mgmt\add_expense.html:119
+#: .\app\templates\expense_mgmt\expense_list.html:105
+#: .\app\templates\expense_mgmt\view_expense.html:84
+#: .\app\templates\farm_mgmt\farm_list.html:104
+#: .\app\templates\farm_mgmt\view_farm.html:77
+msgid "Description"
+msgstr "Descripción"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:143
+msgid "Action"
+msgstr "Acción"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:155
+#: .\app\templates\exp_summary_mgmt\set_budget.html:6
+#: .\app\templates\exp_summary_mgmt\set_budget.html:68
+msgid "Set Budget"
+msgstr "Establecer Presupuesto"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:161
+msgid "Total Budget Sum: ₹"
+msgstr "Suma Total del Presupuesto: $"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:162
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:79
+msgid "Total Expenses: ₹"
+msgstr "Gastos Totales: $"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:163
+msgid "Average Expense: ₹"
+msgstr "Gasto Promedio: $"
+
+#: .\app\templates\exp_summary_mgmt\detailed_reports.html:167
+msgid "Financial Report"
+msgstr "Informe Financiero"
+
+#: .\app\templates\exp_summary_mgmt\expense_summary.html:6
+#: .\app\templates\exp_summary_mgmt\expense_summary.html:32
+msgid "Expense Summary"
+msgstr "Resumen de Gastos"
+
+#: .\app\templates\exp_summary_mgmt\expense_summary.html:36
+msgid "Detailed Expense Reports"
+msgstr "Informes Detallados de Gastos"
+
+#: .\app\templates\exp_summary_mgmt\expense_summary.html:39
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:107
+#, fuzzy
+#| msgid "Total Crops"
+msgid "Total Expenses"
+msgstr "Total de Cultivos"
+
+#: .\app\templates\exp_summary_mgmt\expense_summary.html:40
+#, fuzzy
+#| msgid "Manage expense"
+msgid "Average Expenses"
+msgstr "Gestionar gastos"
+
+#: .\app\templates\exp_summary_mgmt\expense_summary.html:91
+msgid "No expenses have been entered yet."
+msgstr "Aún no se han ingresado gastos."
+
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:6
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:76
+msgid "Financial Reports"
+msgstr "Informes Financieros"
+
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:108
+#, fuzzy
+#| msgid "Total Farms"
+msgid "Total Income"
+msgstr "Total de Granjas"
+
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:109
+msgid "Net Benefit"
+msgstr "Beneficio Neto"
+
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:110
+msgid "Outcome"
+msgstr "Resultado"
+
+#: .\app\templates\exp_summary_mgmt\financial_reports.html:124
+#, fuzzy
+#| msgid "View expenses"
+msgid "View Detailed Expense Reports"
+msgstr "Ver gastos"
+
+#: .\app\templates\exp_summary_mgmt\set_budget.html:63
+msgid "Set Budget for "
+msgstr "Establecer Presupuesto para "
+
+#: .\app\templates\expense_mgmt\add_expense.html:5
+#: .\app\templates\expense_mgmt\add_expense.html:78
+msgid "Add Expense"
+msgstr "Agregar Gasto"
+
+#: .\app\templates\expense_mgmt\add_expense.html:109
+msgid "Expense Date"
+msgstr "Fecha del Gasto"
+
+#: .\app\templates\expense_mgmt\delete_expense.html:6
+#: .\app\templates\expense_mgmt\delete_expense.html:10
+msgid "Delete Expense"
+msgstr "Eliminar Gasto"
+
+#: .\app\templates\expense_mgmt\delete_expense.html:12
+msgid "Are you sure you want to delete the expense?"
+msgstr "¿Estás seguro de que deseas eliminar el gasto?"
+
+#: .\app\templates\expense_mgmt\edit_expense.html:5
+#: .\app\templates\expense_mgmt\edit_expense.html:80
+msgid "Edit Expense"
+msgstr "Editar Gasto"
+
+#: .\app\templates\expense_mgmt\expense_list.html:6
+#: .\app\templates\expense_mgmt\expense_list.html:94
+msgid "Expense Management - Expense List"
+msgstr "Gestión de Gastos - Lista de Gastos"
+
+#: .\app\templates\expense_mgmt\expense_list.html:100
+#: .\app\templates\expense_mgmt\view_expense.html:72
+msgid "Expense ID"
+msgstr "ID del Gasto"
+
+#: .\app\templates\expense_mgmt\expense_list.html:133
+msgid "Add New Expense"
+msgstr "Agregar Nuevo Gasto"
+
+#: .\app\templates\expense_mgmt\view_expense.html:7
+#: .\app\templates\expense_mgmt\view_expense.html:68
+msgid "Expense Details"
+msgstr "Detalles del Gasto"
+
+#: .\app\templates\expense_mgmt\view_expense.html:89
+msgid "Back to Expense List"
+msgstr "Volver a la Lista de Gastos"
+
+#: .\app\templates\farm_mgmt\add_page.html:7
+msgid "Farm Management - Add Farm"
+msgstr "Gestión de Granjas - Agregar Granja"
+
+#: .\app\templates\farm_mgmt\add_page.html:82
+msgid "Add Farm Details"
+msgstr "Agregar Detalles de la Granja"
+
+#: .\app\templates\farm_mgmt\edit_farm.html:5
+#: .\app\templates\farm_mgmt\edit_farm.html:80
+msgid "Edit Farm Details"
+msgstr "Editar Detalles de la Granja"
+
+#: .\app\templates\farm_mgmt\farm_list.html:6
+#: .\app\templates\farm_mgmt\farm_list.html:93
+#, fuzzy
+#| msgid "Manage Farms"
+msgid "Farm Management - Farm List"
+msgstr "Gestión de Granjas - Lista de Granjas"
+
+#: .\app\templates\farm_mgmt\farm_list.html:99
+#: .\app\templates\farm_mgmt\view_farm.html:57
+msgid "Farm ID"
+msgstr "ID de Granja"
+
+#: .\app\templates\farm_mgmt\farm_list.html:100
+#: .\app\templates\farm_mgmt\view_farm.html:61
+msgid "Farmer"
+msgstr "Agricultor"
+
+#: .\app\templates\farm_mgmt\farm_list.html:102
+#: .\app\templates\farm_mgmt\view_farm.html:69
+msgid "Location"
+msgstr "Ubicación"
+
+#: .\app\templates\farm_mgmt\farm_list.html:103
+#: .\app\templates\farm_mgmt\view_farm.html:73
+#, fuzzy
+#| msgid "Total Farms"
+msgid "Total Acres"
+msgstr "Total de Acres"
+
+#: .\app\templates\farm_mgmt\farm_list.html:127
+msgid "Invalid farm ID"
+msgstr "ID de granja no válido"
+
+#: .\app\templates\farm_mgmt\farm_list.html:136
+#, fuzzy
+#| msgid "View Farms"
+msgid "Add New Farm"
+msgstr "Agregar Nueva Granja"
+
+#: .\app\templates\farm_mgmt\view_farm.html:7
+#: .\app\templates\farm_mgmt\view_farm.html:53
+msgid "Farm Details"
+msgstr "Detalles de la Granja"
+
+#: .\app\templates\livestock_mgmt\add_livestock.html:7
+#, fuzzy
+#| msgid "Manage Livestock"
+msgid "Livestock Management - Add Livestock"
+msgstr "Gestión de Ganado - Agregar Ganado"
+
+#: .\app\templates\livestock_mgmt\add_livestock.html:91
+msgid "Add Livestock Details"
+msgstr "Agregar Detalles del Ganado"
+
+#: .\app\templates\livestock_mgmt\edit_livestock.html:7
+#: .\app\templates\livestock_mgmt\edit_livestock.html:81
+#, fuzzy
+#| msgid "View Livestock"
+msgid "Edit Livestock Details"
+msgstr "Editar Detalles del Ganado"
+
+#: .\app\templates\livestock_mgmt\livestock_list.html:5
+#: .\app\templates\livestock_mgmt\livestock_list.html:89
+#, fuzzy
+#| msgid "Manage Livestock"
+msgid "Livestock Management - Livestock List"
+msgstr "Gestión de Ganado - Lista de Ganado"
+
+#: .\app\templates\livestock_mgmt\livestock_list.html:95
+#: .\app\templates\livestock_mgmt\view_livestock.html:57
+#, fuzzy
+#| msgid "View Livestock"
+msgid "Livestock ID"
+msgstr "ID del Ganado"
+
+#: .\app\templates\livestock_mgmt\livestock_list.html:97
+#: .\app\templates\livestock_mgmt\view_livestock.html:65
+#, fuzzy
+#| msgid "View Livestock"
+msgid "Livestock Type"
+msgstr "Tipo de Ganado"
+
+#: .\app\templates\livestock_mgmt\livestock_list.html:98
+#: .\app\templates\livestock_mgmt\view_livestock.html:69
+msgid "Quantity"
+msgstr "Cantidad"
+
+#: .\app\templates\livestock_mgmt\livestock_list.html:99
+#: .\app\templates\livestock_mgmt\view_livestock.html:73
+msgid "Health Status"
+msgstr "Estado de Salud"
+
+#: .\app\templates\livestock_mgmt\livestock_list.html:127
+msgid "No details available for editing"
+msgstr "No hay detalles disponibles para editar"
+
+#: .\app\templates\livestock_mgmt\livestock_list.html:138
+msgid "No details available for deletion"
+msgstr "No hay detalles disponibles para eliminar"
+
+#: .\app\templates\livestock_mgmt\livestock_list.html:146
+#, fuzzy
+#| msgid "View Livestock"
+msgid "Add New Livestock"
+msgstr "Agregar Nuevo Ganado"
+
+#: .\app\templates\livestock_mgmt\view_livestock.html:7
+#: .\app\templates\livestock_mgmt\view_livestock.html:53
+msgid "Livestock Details"
+msgstr "Detalles del Ganado"
+
+#: .\app\templates\login.html:9 .\app\templates\login.html:158
+#: .\app\templates\login.html:163
+msgid "Login"
+msgstr "Iniciar Sesión"
+
+#: .\app\templates\login.html:166
+msgid "Don't have an account? "
+msgstr "¿No tienes una cuenta? "
+
+#: .\app\templates\login.html:166 .\app\templates\signup.html:9
+#: .\app\templates\signup.html:92 .\app\templates\signup.html:96
+msgid "Sign Up"
+msgstr "Regístrate"
+
+#: .\app\templates\register.html:7 .\app\templates\register.html:69
+msgid "Farmer Registration"
+msgstr "Registro de Agricultor"
+
+#: .\app\templates\sales_mgmt\error_page.html:50
+msgid "Error"
+msgstr "Error"
+
+#: .\app\templates\sales_mgmt\error_page.html:52
+msgid "Go Back to dashboard"
+msgstr "Volver al panel de control"
+
+#: .\app\templates\sales_mgmt\messages.html:6
+#: .\app\templates\sales_mgmt\sale_list.html:6
+#: .\app\templates\sales_mgmt\sale_list.html:105
+msgid "Sale List"
+msgstr "Lista de Ventas"
+
+#: .\app\templates\sales_mgmt\sale_list.html:112
+msgid "Remove"
+msgstr "Eliminar"
+
+#: .\app\templates\sales_mgmt\sale_list.html:114
+msgid "Quantity(in Kgs,.)"
+msgstr "Cantidad (en Kgs)"
+
+#: .\app\templates\sales_mgmt\sale_list.html:115
+msgid "Unit Price(in ₹/kg,.)"
+msgstr "Precio Unitario (en $/kg)"
+
+#: .\app\templates\sales_mgmt\sale_list.html:120
+msgid "No Image"
+msgstr "Sin Imagen"
+
+#: .\app\templates\sales_mgmt\sale_list.html:127
+msgid "No sales data available."
+msgstr "No hay datos de ventas disponibles."
+
+#: .\farmer\settings.py:123
+msgid "English"
+msgstr "Inglés"
+
+#: .\farmer\settings.py:124
+msgid "Kannada"
+msgstr "Kannada"
+
+#: .\farmer\settings.py:125
+msgid "Spanish"
+msgstr "Español"

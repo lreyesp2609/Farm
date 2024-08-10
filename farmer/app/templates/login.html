@@ -1,11 +1,12 @@
 <!-- login.html -->
 {% load static %}
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>{% trans "Login" %}</title>
 
     <!-- Add fantastic styles here -->
     <style>
@@ -128,14 +129,21 @@
         {
             const englishButton = document.getElementById('english-button');
             const kannadaButton = document.getElementById('kannada-button');
+            const espanishButton = document.getElementById('spanish-button');
 
             if (language === 'en') {
                 englishButton.style.display = 'none';
                 kannadaButton.style.display = 'inline-block';
+                espanishButton.style.display = 'inline-block';
+            } else if (language === 'es') {
+                englishButton.style.display = 'inline-block';
+                kannadaButton.style.display = 'inline-block';
+                espanishButton.style.display = 'none';
             } else {
                 englishButton.style.display = 'inline-block';
                 kannadaButton.style.display = 'none';
-            }
+                espanishButton.style.display = 'inline-block';
+            } 
         }
     </script>
 </head>
@@ -144,16 +152,17 @@
         <div class="language-switch">
             <a id="english-button" class="language-button" href="{% url 'app:switch_language' language='en' %}?next={{ request.path }}" style="display: {% if LANGUAGE_CODE == 'en' %}none{% endif %}">English</a>
             <a id="kannada-button" class="language-button" href="{% url 'app:switch_language' language='kn' %}?next={{ request.path }}" style="display: {% if LANGUAGE_CODE == 'kn' %}none{% endif %}">ಕನ್ನಡ</a>
+            <a id="spanish-button" class="language-button" href="{% url 'app:switch_language' language='es' %}?next={{ request.path }}" style="display: {% if LANGUAGE_CODE == 'es' %}none{% endif %}">Spanish</a>
         </div>  
     </header>
-    <h1>Login</h1>
+    <h1>{% trans "Login" %}</h1>
     <br>
     <form method="post" action="{% url 'app:login_page' %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Login</button>
+        <button type="submit">{% trans "Login" %}</button>
     </form>
     <br>
-    <p>Don't have an account? <a href="{% url 'app:signup' %}">Sign Up</a></p>
+    <p>{% trans "Don't have an account? " %}<a href="{% url 'app:signup' %}">{% trans "Sign Up" %}</a></p>
 </body>
 </html>

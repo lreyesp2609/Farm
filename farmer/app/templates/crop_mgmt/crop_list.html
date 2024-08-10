@@ -1,8 +1,9 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 
 <head>
-    <title>Crop Management - Crop List</title>
+    <title>{% trans "Crop Management - Crop List" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -89,20 +90,20 @@
 
 <body>
 
-    <h1>Crop Management - Crop List</h1>
+    <h1>{% trans "Crop Management - Crop List" %}</h1>
 
     <!-- Display a table of crops -->
     <table>
         <thead>
             <tr>
-                <th>Crop ID</th>
-                <th>Crop Name</th>
-                <th>Farm Name</th>
-                <th>Plantation Date</th>
-                <th>Harvest Date</th>
-                <th>Yield</th>
-                <th>Notes</th>
-                <th>Actions</th>
+                <th>{% trans "Crop ID" %}</th>
+                <th>{% trans "Crop Name" %}</th>
+                <th>{% trans "Farm Name" %}</th>
+                <th>{% trans "Plantation Date" %}</th>
+                <th>{% trans "Harvest Date" %}</th>
+                <th>{% trans "Yield" %}</th>
+                <th>{% trans "Notes" %}</th>
+                <th>{% trans "Actions" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -118,15 +119,15 @@
                 <td>{{ crop.notes }}</td>
                 <td>
                     {% if crop.crop_id %}
-                        <a href="{% url 'app:view_crop' crop.crop_id %}">View Details</a>
-                        <a href="{% url 'app:edit_crop' crop.crop_id %}">Edit</a>
+                        <a href="{% url 'app:view_crop' crop.crop_id %}">{% trans "View Details" %}</a>
+                        <a href="{% url 'app:edit_crop' crop.crop_id %}">{% trans "Edit" %}</a>
                         <form method="post" action="{% url 'app:delete_crop' crop.crop_id %}" style="display: inline;">
                             {% csrf_token %}
-                            <button type="submit">Delete</button>
+                            <button type="submit">{% trans "Delete" %}</button>
                         </form>
                     {% else %}
                         <!-- Handle the case where crop.crop_id is empty -->
-                        <p>No details available</p>
+                        <p>{% trans "No details available" %}</p>
                     {% endif %}
                 </td>
             </tr>
@@ -135,7 +136,7 @@
         </tbody>
     </table>
 
-    <a class="add-crop-link" href="{% url 'app:add_crop' %}">Add New Crop</a>
+    <a class="add-crop-link" href="{% url 'app:add_crop' %}">{% trans "Add New Crop" %}</a>
 
 </body>
 

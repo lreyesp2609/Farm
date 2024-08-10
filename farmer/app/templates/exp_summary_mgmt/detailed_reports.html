@@ -1,10 +1,11 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Expense Report</title>
+    <title>{% trans "Expense Report" %}</title>
     <style>
         body {
             font-family: 'Arial', sans-serif;
@@ -99,11 +100,11 @@
 
 <body>
 
-    <h1>Expense Report</h1>
+    <h1>{% trans "Expense Report" %}</h1>
 
     <!-- Display filters and form to generate reports -->
     <form method="get" action="{% url 'app:detailed_reports' %}">
-        <label for="expense_type">Expense Type:</label>
+        <label for="expense_type">{% trans "Expense Type" %}:</label>
         <select name="expense_type">
             <!-- Populate expense types from the database -->
             {% for expense_type in expense_types %}
@@ -111,7 +112,7 @@
             {% endfor %}
         </select>
 
-        <label for="farm_id">Farm:</label>
+        <label for="farm_id">{% trans "Farm" %}:</label>
         <select name="farm_id">
             <!-- Populate farms from the database -->
             {% for farm_id, farm_name in farms %}
@@ -119,13 +120,13 @@
             {% endfor %}
         </select>
 
-        <label for="start_date">Start Date:</label>
+        <label for="start_date">{% trans "Start Date" %}:</label>
         <input type="date" name="start_date">
 
-        <label for="end_date">End Date:</label>
+        <label for="end_date">{% trans "End Date" %}:</label>
         <input type="date" name="end_date">
 
-        <button type="submit">Generate Report</button>
+        <button type="submit">{% trans "Generate Report" %}</button>
     </form>
 
 
@@ -133,13 +134,13 @@
     <table>
         <thead>
             <tr>
-                <th>ID</th>
-                <th>Date</th>
-                <th>Amount</th>
-                <th>Type</th>
-                <th>Description</th>
-                <th>Farm</th>
-                <th>Action</th>
+                <th>{% trans "ID" %}</th>
+                <th>{% trans "Date" %}</th>
+                <th>{% trans "Amount" %}</th>
+                <th>{% trans "Type" %}</th>
+                <th>{% trans "Description" %}</th>
+                <th>{% trans "Farm" %}</th>
+                <th>{% trans "Action" %}</th>
             </tr>
         </thead>
         <tbody>
@@ -151,19 +152,19 @@
                     <td>{{ expense.expense_type }}</td>
                     <td>{{ expense.description }}</td>
                     <td>{{ expense.farm.farm_name }}</td>
-                    <td><a href="{% url 'app:set_budget' expense_id=expense.expense_id %}">Set Budget</a></td>
+                    <td><a href="{% url 'app:set_budget' expense_id=expense.expense_id %}">{% trans "Set Budget" %}</a></td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     <div>
-        <p>Total Budget Sum: ₹{{ total_budget_sum }}</p>
-        <p>Total Expenses: ₹{{ total_expenses }}</p>
-        <p>Average Expense: ₹{{ average_expense }}</p>
+        <p>{% trans "Total Budget Sum: ₹" %} {{ total_budget_sum }}</p>
+        <p>{% trans "Total Expenses: ₹" %} {{ total_expenses }}</p>
+        <p>{% trans "Average Expense: ₹" %} {{ average_expense }}</p>
         <!-- Add more statistics as needed -->
     </div>
 
-    <a href="{% url 'app:financial_reports' %}">Financial Report</a>
+    <a href="{% url 'app:financial_reports' %}">{% trans "Financial Report" %}</a>
 
 </body>
 

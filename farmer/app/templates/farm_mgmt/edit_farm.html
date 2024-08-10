@@ -1,7 +1,8 @@
+{% load i18n %}
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Edit Farm Details</title>
+    <title>{% trans "Edit Farm Details" %}</title>
     <style>
         body {
             max-width: 600px;
@@ -76,12 +77,12 @@
 </head>
 <body>
 
-    <h2>Edit Farm Details</h2>
+    <h2>{% trans "Edit Farm Details" %}</h2>
 
     <form method="post" action="{% url 'app:edit_farm' farm.farm_id %}">
         {% csrf_token %}
         {{ form.as_p }}
-        <button type="submit">Update</button>
+        <button type="submit">{% trans "Update" %}</button>
     </form>
 
 </body>
