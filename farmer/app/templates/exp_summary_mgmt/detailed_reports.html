@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Report</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #343a40;
+        }
+
+        form {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        label {
+            margin-right: 5px;
+            color: #555;
+        }
+
+        select,
+        input,
+        button {
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        th,
+        td {
+            padding: 12px;
+            text-align: left;
+            border: 1px solid #dee2e6;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8f9fa;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #28a745;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 4px;
+        }
+
+        a:hover {
+            background-color: #218838;
+        }
+        @media only screen and (max-width: 600px) {
+            form {
+                max-width: 100%;
+            }
+            table {
+                font-size: 14px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Expense Report</h1>
+
+    <!-- Display filters and form to generate reports -->
+    <form method="get" action="{% url 'app:detailed_reports' %}">
+        <label for="expense_type">Expense Type:</label>
+        <select name="expense_type">
+            <!-- Populate expense types from the database -->
+            {% for expense_type in expense_types %}
+                <option value="{{ expense_type }}">{{ expense_type }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="farm_id">Farm:</label>
+        <select name="farm_id">
+            <!-- Populate farms from the database -->
+            {% for farm_id, farm_name in farms %}
+                <option value="{{ farm_id }}">{{ farm_name }}</option>
+            {% endfor %}
+        </select>
+
+        <label for="start_date">Start Date:</label>
+        <input type="date" name="start_date">
+
+        <label for="end_date">End Date:</label>
+        <input type="date" name="end_date">
+
+        <button type="submit">Generate Report</button>
+    </form>
+
+
+    <!-- Display the expense report table -->
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Farm</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.expense_id }}</td>
+                    <td>{{ expense.expense_date }}</td>
+                    <td>{{ expense.amount }}</td>
+                    <td>{{ expense.expense_type }}</td>
+                    <td>{{ expense.description }}</td>
+                    <td>{{ expense.farm.farm_name }}</td>
+                    <td><a href="{% url 'app:set_budget' expense_id=expense.expense_id %}">Set Budget</a></td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <div>
+        <p>Total Budget Sum: ₹{{ total_budget_sum }}</p>
+        <p>Total Expenses: ₹{{ total_expenses }}</p>
+        <p>Average Expense: ₹{{ average_expense }}</p>
+        <!-- Add more statistics as needed -->
+    </div>
+
+    <a href="{% url 'app:financial_reports' %}">Financial Report</a>
+
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-07 22:28+0530\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: .\farmer\settings.py:141
+msgid "English"
+msgstr ""
+
+#: .\farmer\settings.py:142
+msgid "Kannada"
+msgstr ""
+
+msgid "Welcome to Your Dashboard"
+msgstr "ನಿಮ್ಮ ಡ್ಯಾಶ್ ಬೋರ್ಡ್ ಗೆ ಸ್ವಾಗತ"
+
+msgid "This is where you can manage your farming activities."
+msgstr "ಇಲ್ಲಿ ನೀವು ನಿಮ್ಮ ಕೃಷಿ ಚಟುವಟಿಕೆಗಳನ್ನು ನಿರ್ವಹಿಸಬಹುದು."
+
+msgid "Add Sale"
+msgstr "ಮಾರಾಟ ಸೇರಿಸು"
+
+msgid "Register"
+msgstr "ನೋಂದಾಯಿಸಿ"
+
+msgid "view sales"
+msgstr "ಮಾರಾಟ ವೀಕ್ಷಿಸಿ"
+
+msgid "Summary"
+msgstr "ಸಾರಾಂಶ"
+
+msgid "Total Farms"
+msgstr "ಒಟ್ಟು ಹೊಲಗಳು"
+
+msgid "Total Crops"
+msgstr "ಒಟ್ಟು ಬೆಳೆಗಳು"
+
+msgid "Total Livestock"
+msgstr "ಒಟ್ಟು ಜಾನುವಾರುಗಳು"
+
+msgid "Manage Farms"
+msgstr "ಫಾರ್ಮ್ ಗಳನ್ನು ನಿರ್ವಹಿಸಿ"
+
+msgid "View Farms"
+msgstr "ಫಾರ್ಮ್ ಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
+
+msgid "Manage Crops"
+msgstr "ಬೆಳೆಗಳನ್ನು ನಿರ್ವಹಿಸಿ"
+
+msgid "View Crops"
+msgstr "ಬೆಳೆಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
+
+msgid "Manage Livestock"
+msgstr "ಜಾನುವಾರುಗಳನ್ನು ನಿರ್ವಹಿಸಿ"
+
+msgid "View Livestock"
+msgstr "ಜಾನುವಾರುಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
+
+msgid "Manage expense"
+msgstr "ವೆಚ್ಚವನ್ನು ನಿರ್ವಹಿಸಿ"
+
+msgid "View expenses"
+msgstr "ವೆಚ್ಚಗಳನ್ನು ವೀಕ್ಷಿಸಿ"
+
+msgid "Manage summary"
+msgstr "ಸಾರಾಂಶವನ್ನು ನಿರ್ವಹಿಸಿ"
+
+msgid "View expense summary"
+msgstr "ವೆಚ್ಚದ ಸಾರಾಂಶ ವೀಕ್ಷಿಸಿ"
+
+msgid "View Sales"
+msgstr "ಮಾರಾಟ ವೀಕ್ಷಿಸಿ"
+
+msgid "Logout"
+msgstr "ಲಾಗ್ ಔಟ್"

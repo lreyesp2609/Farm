@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Financial Reports</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h1 {
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+
+        p {
+            font-size: 18px;
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            border-radius: 8px;
+            background-color: #fff;
+        }
+
+        th, td {
+            border: 1px solid #dee2e6;
+            padding: 12px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        tr:hover {
+            background-color: #f8f9fa;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .net-benefit {
+            font-size: 18px;
+            font-weight: bold;
+            color: #28a745;  /* Green color for positive benefit */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Financial Reports</h1>
+
+    <!-- Display total expenses and a list of expenses -->
+    <p>Total Expenses: ₹{{ total_expenses }}</p>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Type</th>
+                <th>Description</th>
+                <th>Farm</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for expense in expenses %}
+                <tr>
+                    <td>{{ expense.expense_date }}</td>
+                    <td>{{ expense.amount }}</td>
+                    <td>{{ expense.expense_type }}</td>
+                    <td>{{ expense.description }}</td>
+                    <td>{{ expense.farm.farm_name }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <table>
+        <thead>
+            <tr>
+    
+                <th>Total Expenses</th>
+                <th>Total Income</th>
+                <th>Net Benefit</th>
+                <th>Outcome</th>
+            </tr>
+        </thead>
+        <tbody>
+                <tr>
+    
+                    <td>{{ total_expenses }}</td>
+                    <td>{{ total_income }}</td>
+                    <td>{{ net_benefit }}</td>
+                    <td>{{ profit_loss }}</td>
+                </tr>
+        </tbody>
+    </table>
+
+    <a href="{% url 'app:detailed_reports' %}">View Detailed Expense Reports</a>
+
+</body>
+
+</html>

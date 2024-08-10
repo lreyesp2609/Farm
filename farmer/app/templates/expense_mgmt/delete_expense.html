@@ -1,0 +1,19 @@
+<!-- expense_mgmt/delete_expense.html -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Expense</title>
+</head>
+<body>
+
+<h2>Delete Expense</h2>
+
+<p>Are you sure you want to delete the expense?</p>
+
+<form method="post" action="{% url 'app:delete_expense' expense.expense_id %}">
+    {% csrf_token %}
+    <button type="submit">Delete</button>
+</form>
+
+</body>
+</html>

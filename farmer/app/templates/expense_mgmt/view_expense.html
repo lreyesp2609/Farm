@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Expense Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 80%;
+            max-width: 600px;
+            margin-top: 20px;
+            border-collapse: collapse;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+            border-radius: 8px;
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 15px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        td {
+            background-color: #f9f9f9;
+        }
+
+        a {
+            text-decoration: none;
+            color: #007bff;
+            transition: color 0.3s ease-in-out;
+        }
+
+        a:hover {
+            color: #0056b3;
+        }
+
+        .back-link {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Expense Details</h2>
+
+    <table border="1">
+        <tr>
+            <th>Expense ID</th>
+            <td>{{ expense.expense_id }}</td>
+        </tr>
+        <tr>
+            <th>Type</th>
+            <td>{{ expense.expense_type }}</td>
+        </tr>
+        <tr>
+            <th>Amount</th>
+            <td>{{ expense.amount }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ expense.description }}</td>
+        </tr>
+    </table>
+
+    <a class="back-link" href="{% url 'app:expense_list' %}">&lt; Back to Expense List</a>
+
+</body>
+</html>

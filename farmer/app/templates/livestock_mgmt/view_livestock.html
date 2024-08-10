@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Livestock Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column; /* Updated to vertical direction */
+            height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 80%;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        td {
+            background-color: #fff;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Livestock Details</h2>
+
+    <table border="1">
+        <tr>
+            <th>Livestock ID</th>
+            <td>{{ livestock.livestock_id }}</td>
+        </tr>
+        <tr>
+            <th>Farm</th>
+            <td>{{ livestock.farm.farm_name }}</td>
+        </tr>
+        <tr>
+            <th>Livestock Type</th>
+            <td>{{ livestock.livestock_type }}</td>
+        </tr>
+        <tr>
+            <th>Quantity</th>
+            <td>{{ livestock.quantity }}</td>
+        </tr>
+        <tr>
+            <th>Health Status</th>
+            <td>{{ livestock.health_status }}</td>
+        </tr>
+        <tr>
+            <th>Notes</th>
+            <td>{{ livestock.notes }}</td>
+        </tr>
+    </table>
+
+</body>
+</html>

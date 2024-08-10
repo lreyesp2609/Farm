@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Farm Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        td {
+            background-color: #fff;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Farm Details</h2>
+
+    <table border="1">
+        <tr>
+            <th>Farm ID</th>
+            <td>{{ farm.farm_id }}</td>
+        </tr>
+        <tr>
+            <th>Farmer</th>
+            <td>{{ farm.farmer.user.username }}</td>
+        </tr>
+        <tr>
+            <th>Farm Name</th>
+            <td>{{ farm.farm_name }}</td>
+        </tr>
+        <tr>
+            <th>Location</th>
+            <td>{{ farm.location }}</td>
+        </tr>
+        <tr>
+            <th>Total Acres</th>
+            <td>{{ farm.total_acres }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ farm.description }}</td>
+        </tr>
+    </table>
+
+</body>
+</html>

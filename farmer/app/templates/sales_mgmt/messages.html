@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Sale List</title>
+    <style>
+        /* Add your CSS styles here */
+        .hidden {
+            display: none;
+        }
+        .messages {
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    {% if messages %}
+        <ul class="messages {{ class_name }}">
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+
+</html>

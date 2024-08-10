@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crop Details</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+        }
+
+        h2 {
+            text-align: center;
+            color: #343a40;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 80%;
+            max-width: 600px;
+            margin: 0 auto;
+            border-collapse: collapse;
+            background-color: #fff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        th, td {
+            padding: 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+            color: #555;
+        }
+
+        th {
+            background-color: #007bff;
+            color: #fff;
+        }
+
+        td {
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Crop Details</h2>
+
+    <table border="1">
+        <tr>
+            <th>Crop ID</th>
+            <td>{{ crop.crop_id }}</td>
+        </tr>
+        <tr>
+            <th>Farm</th>
+            <td>{{ crop.farm.farm_name }}</td>
+        </tr>
+        <tr>
+            <th>Crop Name</th>
+            <td>{{ crop.crop_name }}</td>
+        </tr>
+        <tr>
+            <th>Planting Date</th>
+            <td>{{ crop.planting_date }}</td>
+        </tr>
+        <tr>
+            <th>Harvesting Date</th>
+            <td>{{ crop.harvesting_date }}</td>
+        </tr>
+        <tr>
+            <th>Yield</th>
+            <td>{{ crop.yield_amount }}</td>
+        </tr>        
+        <tr>
+            <th>Notes</th>
+            <td>{{ crop.notes }}</td>
+        </tr>
+    </table>
+
+</body>
+</html>

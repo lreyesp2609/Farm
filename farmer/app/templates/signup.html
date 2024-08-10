@@ -1,0 +1,98 @@
+<!-- signup.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+
+    <!-- Add styles here -->
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-size: cover;
+            background-position: center;
+            background-blur: 10px;
+            margin: 0;
+            padding: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            text-align: center;
+        }
+
+        body::before {
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('{% static "log.jpg" %}'); 
+            background-size: cover;
+            background-position: center;
+            filter: blur(5px); /* Apply the blur effect */
+            z-index: -1;
+        }
+
+        h2 {
+            text-align: center;
+            color: #000000;
+            font-size: 70px;
+            margin-bottom: 20px;
+        }
+
+        form {
+            max-width: 500px;
+            width: 100%;
+            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for better readability */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            }
+        
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #000000;
+            text-align: left;
+            font-weight: bold;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 16px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        button {
+            background-color: #3498db;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 45px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Sign Up</h2>
+    <form method="post" action="{% url 'app:signup' %}">
+        {% csrf_token %}
+        {{ user_form.as_p }}
+        <button type="submit">Sign Up</button>
+    </form>
+</body>
+</html>

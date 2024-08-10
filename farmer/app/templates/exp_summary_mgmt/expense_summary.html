@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Expense Summary</title>
+    <!-- Include Chart.js library -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        /* Your existing styles remain unchanged */
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            margin: 0;
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Add this style to center the content */
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Expense Summary</h1>
+
+        {% if user_has_expenses %}
+            <!-- Add a link to the detailed reports page -->
+            <a href="{% url 'app:detailed_reports' %}">Detailed Expense Reports</a>
+
+            <!-- Display total expenses, average expenses, and other metrics -->
+            <p>Total Expenses: {{ total_expenses }}</p>
+            <p>Average Expenses: {{ average_expenses }}</p>
+            <!-- Add other high-level metrics -->
+
+            <!-- Bar chart for expenses by type -->
+            <canvas id="expensesByTypeChart" width="400" height="200"></canvas>
+
+            <!-- Pie chart for expense distribution -->
+            <canvas id="expenseDistributionChart" width="400" height="200"></canvas>
+
+            <script>
+                // JavaScript code to create and update charts using Chart.js
+                document.addEventListener('DOMContentLoaded', function () {
+                    // Get data from Django context
+                    var expenseTypes = {{ expense_types|safe }};
+                    var expensesByType = {{ expenses_by_type|safe }};
+                    var expenseDistribution = {{ expense_distribution|safe }};
+
+                    // Convert expensesByType to an array of floats
+                    var expensesByTypeData = expensesByType.map(parseFloat);
+
+                    // Bar chart for expenses by type
+                    var ctxExpensesByType = document.getElementById('expensesByTypeChart').getContext('2d');
+                    var expensesByTypeChart = new Chart(ctxExpensesByType, {
+                        type: 'bar',
+                        data: {
+                            labels: expenseTypes,
+                            datasets: [{
+                                label: 'Expenses by Type',
+                                data: expensesByTypeData,  // Use the converted array here
+                                backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                borderColor: 'rgba(75, 192, 192, 1)',
+                                borderWidth: 1
+                            }]
+                        }
+                    });
+
+                    // Pie chart for expense distribution
+                    var ctxExpenseDistribution = document.getElementById('expenseDistributionChart').getContext('2d');
+                    var expenseDistributionChart = new Chart(ctxExpenseDistribution, {
+                        type: 'pie',
+                        data: {
+                            labels: expenseTypes,
+                            datasets: [{
+                                data: expenseDistribution,
+                                backgroundColor: ['red', 'blue', 'green', 'yellow', 'purple', 'orange']
+                            }]
+                        }
+                    });
+                });
+            </script>
+        {% else %}
+            <p>No expenses have been entered yet.</p>
+        {% endif %}
+
+    </div>
+
+</body>
+
+</html>
