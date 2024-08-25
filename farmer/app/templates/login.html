@@ -22,6 +22,7 @@
             text-align: center;
             overflow: hidden; /* Ensure the blurred effect doesn't overflow */
             position: relative;
+            background-color: #f0f0f0; /* Light grey background for better contrast */
         }
 
         body::before {
@@ -31,7 +32,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('{% static "log.jpg" %}'); 
+            background-image: url('{% static "log.jpg" %}');
             background-size: cover;
             background-position: center;
             filter: blur(8px); /* Apply the blur effect */
@@ -39,19 +40,18 @@
         }
 
         h1 {
-            text-align: center; 
             color: #070F2B;
-            font-size:80px;
-            margin-bottom:20px;
+            font-size: 3rem; /* Adjust font size for better responsiveness */
+            margin-bottom: 20px;
         }
 
         form {
             max-width: 400px;
-            width: 100%;
-            background-color: rgba(255, 255, 255, 0.8); /* Add a semi-transparent white background for better readability */
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            background-color: rgba(255, 255, 255, 0.9); /* Slightly more opaque background for better readability */
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
         }
 
         label {
@@ -59,26 +59,28 @@
             margin-bottom: 8px;
             color: #555;
             text-align: left;
-            font-weight:bold;
+            font-weight: bold;
         }
         
         input {
-            width: 100%;
-            padding: 8px;
+            width: calc(100% - 16px);
+            padding: 10px;
             margin-bottom: 16px;
             box-sizing: border-box;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 6px;
+            font-size: 1rem;
         }
 
         button {
             background-color: #4caf50;
             color: #fff;
-            padding: 10px;
+            padding: 12px;
             border: none;
-            border-radius: 50px;
+            border-radius: 25px;
             cursor: pointer;
             width: 100%;
+            font-size: 1.1rem;
         }
 
         button:hover {
@@ -87,36 +89,38 @@
 
         p {
             text-align: center;
-            margin-top: 16px;
+            margin-top: 20px;
             color: #070F2B;
         }
 
         a {
-            color: #070F2B;
+            color: #4caf50; /* Match link color with button */
             text-decoration: none;
-            font-weight:bold;
+            font-weight: bold;
         }
 
         a:hover {
             text-decoration: underline;
         }
+
         .language-switch {
             display: flex;
             justify-content: flex-end;  /* Align the language buttons to the right */
-            margin: 10px;  /* Add some margin for spacing */
+            margin: 20px;  /* Add margin for spacing */
             position: absolute;
-            top: 10px;
-            right: 10px;
+            top: 20px;
+            right: 20px;
         }
 
         .language-button {
             margin-left: 10px;  /* Add spacing between buttons */
             text-decoration: none;
-            padding: 5px 10px;
+            padding: 8px 16px;
             background-color: #4caf50;
             color: #fff;
             border-radius: 20px;
             cursor: pointer;
+            font-size: 0.9rem;
         }
 
         .language-button:hover {
@@ -152,17 +156,15 @@
         <div class="language-switch">
             <a id="english-button" class="language-button" href="{% url 'app:switch_language' language='en' %}?next={{ request.path }}" style="display: {% if LANGUAGE_CODE == 'en' %}none{% endif %}">English</a>
             <a id="kannada-button" class="language-button" href="{% url 'app:switch_language' language='kn' %}?next={{ request.path }}" style="display: {% if LANGUAGE_CODE == 'kn' %}none{% endif %}">ಕನ್ನಡ</a>
-            <a id="spanish-button" class="language-button" href="{% url 'app:switch_language' language='es' %}?next={{ request.path }}" style="display: {% if LANGUAGE_CODE == 'es' %}none{% endif %}">Spanish</a>
+            <a id="spanish-button" class="language-button" href="{% url 'app:switch_language' language='es' %}?next={{ request.path }}" style="display: {% if LANGUAGE_CODE == 'es' %}none{% endif %}">Español</a>
         </div>  
     </header>
     <h1>{% trans "Login" %}</h1>
-    <br>
     <form method="post" action="{% url 'app:login_page' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">{% trans "Login" %}</button>
     </form>
-    <br>
     <p>{% trans "Don't have an account? " %}<a href="{% url 'app:signup' %}">{% trans "Sign Up" %}</a></p>
 </body>
 </html>
