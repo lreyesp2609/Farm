@@ -50,7 +50,8 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
-    
+    'app.middleware.PreventBackToLoginMiddleware',
+
 ]
 
 ROOT_URLCONF = 'farmer.urls'
@@ -138,7 +139,7 @@ STATIC_URL = 'static/'
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
-DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoFiaeld'
 
 
 MEDIA_URL = '/media/'
@@ -149,7 +150,6 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 LOGIN_REDIRECT_URL = 'app:dashboard'
-LOGOUT_REDIRECT_URL = 'app:login_page'
 LOGIN_URL = 'app:login_page'
 
 

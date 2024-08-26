@@ -11,26 +11,32 @@ from django.urls import reverse
 from django.db.models import Sum, Avg
 from django.db import DatabaseError
 from django.contrib.auth import login as auth_login, logout as auth_logout
+from django.views.decorators.cache import never_cache
 
+@never_cache
 @login_required
 def register_view(request):
     if request.method == 'POST':
         farmer_form = FarmerRegistrationForm(request.POST)
         if farmer_form.is_valid():
-            # Check if the user is authenticated (logged in)
             if request.user.is_authenticated:
                 farmer = farmer_form.save(commit=False)
                 farmer.user = request.user
                 farmer.save()
+                messages.success(request, "Registration successful!")
                 return redirect('app:dashboard')
             else:
-                # Handle the case where the user is not logged in
-                # Redirect to a login page or display an error message
-                return redirect('app:register')  # Example redirect to login page
+                messages.error(request, "You must be logged in to register.")
+                return redirect('app:login_page')  # Or wherever you want to redirect
     else:
-        farmer_form = FarmerRegistrationForm()
+        try:
+            existing_farmer = request.user.farmer
+            messages.info(request, "You already have a farmer profile.")
+            return redirect('app:dashboard')
+        except Farmer.DoesNotExist:
+            farmer_form = FarmerRegistrationForm()
+    
     return render(request, 'register.html', {'farmer_form': farmer_form})
-
 #-------------------------------------------------------
 
 def signup_view(request):
@@ -44,6 +50,7 @@ def signup_view(request):
         user_form = UserRegistrationForm()
     return render(request, 'signup.html', {'user_form': user_form})
 
+@never_cache
 def login_view(request):
     if request.user.is_authenticated:
         return redirect('app:dashboard')
@@ -57,16 +64,7 @@ def login_view(request):
     else:
         form = AuthenticationForm()
 
-    # Añadir un parámetro para evitar retrocesos innecesarios
-    if 'next' in request.GET:
-        next_url = request.GET['next']
-    else:
-        next_url = None
-
-    response = render(request, 'login.html', {
-        'form': form,
-        'next': next_url
-    })
+    response = render(request, 'login.html', {'form': form})
     response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
     response['Pragma'] = 'no-cache'
     response['Expires'] = '0'
@@ -74,7 +72,7 @@ def login_view(request):
 
 
 #---------------------------------------------------------------------
-
+@never_cache
 @login_required
 def dashboard_view(request):
     total_farms = Farm.objects.count()
