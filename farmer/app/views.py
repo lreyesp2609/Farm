@@ -10,7 +10,7 @@ from django.db import models
 from django.urls import reverse
 from django.db.models import Sum, Avg
 from django.db import DatabaseError
-
+from django.contrib.auth import login as auth_login, logout as auth_logout
 
 @login_required
 def register_view(request):
@@ -45,36 +45,51 @@ def signup_view(request):
     return render(request, 'signup.html', {'user_form': user_form})
 
 def login_view(request):
+    if request.user.is_authenticated:
+        return redirect('app:dashboard')
+
     if request.method == 'POST':
         form = AuthenticationForm(data=request.POST)
         if form.is_valid():
             user = form.get_user()
-            login(request, user)
-            # Redirect to a success page or wherever you want
-            return redirect('app:dashboard')  # Replace 'success_page' with the URL name of your success page
+            auth_login(request, user)
+            return redirect('app:dashboard')
     else:
         form = AuthenticationForm()
-    return render(request, 'login.html', {'form': form})
+
+    # Añadir un parámetro para evitar retrocesos innecesarios
+    if 'next' in request.GET:
+        next_url = request.GET['next']
+    else:
+        next_url = None
+
+    response = render(request, 'login.html', {
+        'form': form,
+        'next': next_url
+    })
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
+
 
 #---------------------------------------------------------------------
 
+@login_required
 def dashboard_view(request):
-     # Logic to retrieve total farms
     total_farms = Farm.objects.count()
-
-    # Logic to retrieve total crops
     total_crops = Crop.objects.count()
-
-    # Logic to retrieve total livestock
     total_livestock = Livestock.objects.count()
 
-    context = {
+    response = render(request, 'dashboard.html', {
         'total_farms': total_farms,
         'total_crops': total_crops,
         'total_livestock': total_livestock,
-    }
-
-    return render(request, 'dashboard.html',context)
+    })
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
 
 #--------------------------------------------------------------------
 
@@ -432,27 +447,17 @@ def switch_language(request, language):
 
 #--------------------------------------------------------------------------
 def custom_logout(request):
-    # Check if the user is authenticated
     if request.user.is_authenticated:
-        # Store user data before deleting
         user_data = {
             'username': request.user.username,
             'email': request.user.email,
         }
-
-        # Delete the user (this will delete related data in other tables if set up with CASCADE)
-        request.user.delete()
-
-        # Log out the user
-        logout(request)
-
+        auth_logout(request)
         messages.success(request, f'User {user_data["username"]} has been successfully logged out.')
     else:
         messages.warning(request, 'You are not logged in.')
 
     return redirect('app:login_page')
-
-
 
 def error(request):
     return render(request, 'error_page.html')

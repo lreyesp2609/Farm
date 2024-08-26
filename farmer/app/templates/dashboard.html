@@ -3,13 +3,13 @@
 
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans "Dashboard" %}</title>
-    <!-- Add your CSS links or styles here -->
     <style>
-        ul {    
+        ul {
             font-size: 25px;
         }
 
@@ -18,9 +18,10 @@
             margin: 0;
             padding: 20px;
             position: relative;
-            z-index: 1; /* Ensure content is above the blurred background */
-            color: #fff; /* Text color */
+            z-index: 1;
+            color: #fff;
         }
+
         body::before {
             content: "";
             position: fixed;
@@ -28,52 +29,49 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image:url('{% static "dash.png" %}'); 
+            background-image:url('{% static "dash.png" %}');
             background-size: cover;
             background-position: center;
-            filter: blur(2px); /* Apply the blur effect */
+            filter: blur(2px);
             z-index: -1;
         }
 
         header {
             text-align: center;
-            background-color: transparent; /* Remove background color */
+            background-color: transparent;
             padding: 20px;
             color: #fff;
         }
 
-        h1{
-            font-size:65px;
+        h1 {
+            font-size: 65px;
             color: #000000;
-
         }
-        
+
         h2 {
             color: #000000;
         }
 
         p.center-text {
-            text-align: center; /* Center-align the first paragraph */
+            text-align: center;
             color: #000000;
-            font-size:20px;
+            font-size: 20px;
         }
 
         p.m {
             padding-left: 70px;
             color: #555;
-            font-size: 25px; /* Adjust the size according to your preference */
-            font-family: 'Helvetica Neue', Arial, sans-serif; /* Use a standard font */
-            line-height: 1.5; /* Adjust line height for better readability */
-            color:#000000;
-            font-size:40px;
+            font-size: 40px;
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            line-height: 1.5;
+            color: #000000;
         }
 
         .summary {
             margin-bottom: 20px;
-            color:#000000;
-            font-size:30px;
+            color: #000000;
+            font-size: 30px;
         }
-
 
         .management-links {
             display: flex;
@@ -83,37 +81,37 @@
             opacity: 0;
             transition: opacity 3s ease-in-out;
         }
-        
+
         .management-card {
-            display:inline-block;
-            width: 800px; /* Set the width of each card */
-            height: 150px; /* Set the height of each card */
+            display: inline-block;
+            width: 800px;
+            height: 150px;
             background-color: #EEEDEB;
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
             transition: transform 20s ease;
             margin: 10px auto;
-            box-sizing: border-box; /* Include padding and border in the total width */
-            background-position: right center; 
+            box-sizing: border-box;
+            background-position: right center;
             background-size: contain;
             background-repeat: no-repeat;
-            filter: blur(2px); /* Apply default blur */
-            transition: filter 0.9s ease; /* Smooth transition for hover effect */
+            filter: blur(2px);
+            transition: filter 0.9s ease;
         }
-        
+
         @media (max-width: 768px) {
             .management-card {
-                width: calc(100% - 20px); /* Each card takes up 100% width on smaller screens */
-                height: auto; /* Auto height to maintain the aspect ratio */
+                width: calc(100% - 20px);
+                height: auto;
             }
         }
 
         .management-card:hover {
             transform: scale(1.05);
             background-color: #FFB38E;
-            filter: blur(0); 
-            transition: transform 0.9s ease, background-color 0.9s ease; 
+            filter: blur(0);
+            transition: transform 0.9s ease, background-color 0.9s ease;
         }
 
         .management-links h2 {
@@ -141,7 +139,7 @@
         }
 
         nav {
-            background-color: #2c3e50; /* Background color for the navigation bar */
+            background-color: #2c3e50;
             padding: 15px;
         }
 
@@ -158,97 +156,113 @@
 
         ul.nav-menu li a {
             text-decoration: none;
-            color: #ecf0f1; /* Text color for navigation links */
+            color: #ecf0f1;
             font-size: 18px;
             font-weight: bold;
-            transition: color 0.3s ease-in-out;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease-in-out, color 0.3s ease-in-out;
+        }
+
+        ul.nav-menu li a.add-sale {
+            background-color: #333;
+            /* Dark color for "Add Sale" */
+        }
+
+        ul.nav-menu li a.view-sales {
+            background-color: #333;
+            /* Dark color for "View Sales" */
+        }
+
+        ul.nav-menu li a.register {
+            background-color: #3498db;
+            /* Blue color for "Register" */
         }
 
         ul.nav-menu li a:hover {
-            color: #3498db; /* Hover color for navigation links */
+            background-color: #2c3e50;
+            /* Darker color for hover effect */
         }
 
         .summary-container {
-            background-color: rgba(255, 255, 255, 0.5); /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.5);
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(1px); /* Apply the blur effect to the background */
+            backdrop-filter: blur(1px);
         }
 
         .welcome-container {
-            background-color: rgba(255, 255, 255, 0.3); /* Adjust the alpha value for transparency */
+            background-color: rgba(255, 255, 255, 0.3);
             padding: 20px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            backdrop-filter: blur(1px); /* Apply the blur effect to the background */
+            backdrop-filter: blur(1px);
             text-align: center;
         }
+
         .disabled-link {
-            color: #C7C8CC; /* You can adjust the color for disabled links */
+            color: #C7C8CC;
             pointer-events: none;
             text-decoration: none;
-            color: #ecf0f1; /* Text color for navigation links */
             font-size: 18px;
             font-weight: bold;
-        }   
+        }
+
         .disabled-link span {
             text-decoration: none;
-            color: #ecf0f1; /* Text color for navigation links */
+            color: #ecf0f1;
             font-size: 18px;
             font-weight: bold;
         }
     </style>
 </head>
-<body>
-    <!-- Register link -->
-    
 
+<body>
     <header>
         <div class="welcome-container">
             <h1>{% trans "Welcome to Your Dashboard" %}</h1>
             <p class="center-text">{% trans "This is where you can manage your farming activities." %}</p>
         </div>
-    
-        <nav>
-            <ul class="nav-menu">
-                <li>
-                    {% if request.user.farmer %}
-                        <a href="{% url 'app:add_sale' %}">{% trans "Add Sale" %}</a>
-                    {% else %}
-                        <span class="disabled-link">{% trans "Add Sale" %}</span>
-                    {% endif %}
-                </li>
-                <li><a href="{% url 'app:register' %}">{% trans "Register" %}</a></li>
-                <li>
-                    {% if request.user.farmer %}
-                        <a href="{% url 'app:sale_list' %}">{% trans "View Sales" %}</a>
-                    {% else %}
-                        <span class="disabled-link">{% trans "View Sales" %}</span>
-                    {% endif %}
-                </li>
-                <li style="margin-left: auto;">
-                    <a href="{% url 'app:custom_logout' %}" style="display: flex; align-items: center;">
-                        <img src="{% static 'logout.png' %}" alt="Logout" style="width: 20px; height: 20px; margin-right: 5px;">
-                        {% trans "Logout" %}
-                    </a>
-                </li>
-            </ul>
-        </nav>       
+
+        <ul class="nav-menu">
+            <li>
+                {% if request.user.farmer %}
+                <a href="{% url 'app:add_sale' %}" class="add-sale">{% trans "Add Sale" %}</a>
+                {% else %}
+                <span class="disabled-link">{% trans "Add Sale" %}</span>
+                {% endif %}
+            </li>
+            <li>
+                <a href="{% url 'app:register' %}" class="register">{% trans "Register" %}</a>
+            </li>
+            <li>
+                {% if request.user.farmer %}
+                <a href="{% url 'app:sale_list' %}" class="view-sales">{% trans "View Sales" %}</a>
+                {% else %}
+                <span class="disabled-link">{% trans "View Sales" %}</span>
+                {% endif %}
+            </li>
+            <li style="margin-left: auto;">
+                <a href="{% url 'app:custom_logout' %}" class="add-sale" style="display: flex; align-items: center;">
+                    <img src="{% static 'logout.png' %}" alt="Logout"
+                        style="width: 20px; height: 20px; margin-right: 5px;">
+                    {% trans "Logout" %}
+                </a>
+            </li>
+        </ul>
     </header>
     <br>
     <br>
     <br>
-    <br>   
     <br>
-    <!-- Display summary information -->
+    <br>
     <div class="summary-container">
         <div class="summary">
             <h2> {% trans "Summary" %}</h2>
             <p class="m">{% trans "Total Farms" %}: {{ total_farms }}</p>
             <p class="m">{% trans "Total Crops" %}: {{ total_crops }}</p>
             <p class="m">{% trans "Total Livestock" %}: {{ total_livestock }}</p>
-            <!-- Add more summary information as needed -->
         </div>
     </div>
     <br>

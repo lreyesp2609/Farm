@@ -50,6 +50,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    
 ]
 
 ROOT_URLCONF = 'farmer.urls'
@@ -148,6 +149,8 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = [BASE_DIR / "static"]
 
 LOGIN_REDIRECT_URL = 'app:dashboard'
+LOGOUT_REDIRECT_URL = 'app:login_page'
+LOGIN_URL = 'app:login_page'
 
 
 
