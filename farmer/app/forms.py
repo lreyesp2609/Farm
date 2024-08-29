@@ -1,4 +1,5 @@
     # forms.py
+import datetime
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from .models import Farmer,Farm,Crop,Livestock,Expense,Sale
@@ -69,11 +70,27 @@ class LivestockForm(forms.ModelForm):
 
 class ExpenseForm(forms.ModelForm):
     farm_name = forms.ModelChoiceField(queryset=Farm.objects.none(), empty_label=None)
+    expense_date = forms.DateField(
+        widget=forms.DateInput(attrs={'type': 'date'}),
+        required=True
+    )
 
     def __init__(self, *args, farmer=None, **kwargs):
         super().__init__(*args, **kwargs)
         if farmer:
             self.fields['farm_name'].queryset = Farm.objects.filter(farmer=farmer)
+
+    def clean_expense_date(self):
+        date_str = self.cleaned_data.get('expense_date')
+        if isinstance(date_str, str):
+            # Intenta convertir la fecha en diferentes formatos
+            for fmt in ('%d-%m-%Y', '%d/%m/%Y', '%Y-%m-%d'):
+                try:
+                    return datetime.strptime(date_str, fmt).date()
+                except ValueError:
+                    continue
+            raise forms.ValidationError("Invalid date format. Please use dd-mm-yyyy, dd/mm/yyyy or yyyy-mm-dd.")
+        return date_str
 
     class Meta:
         model = Expense

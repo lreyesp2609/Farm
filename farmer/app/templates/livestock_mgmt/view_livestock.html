@@ -1,34 +1,66 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans "Livestock Details" %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Poppins', sans-serif;
             background-color: #f8f9fa;
             margin: 0;
             padding: 20px;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            flex-direction: column; /* Updated to vertical direction */
-            height: 100vh;
+            min-height: 100vh;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 800px;
+            position: relative;
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-align: center;
+            text-decoration: none;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
         }
 
         h2 {
-            text-align: center;
             color: #343a40;
-            margin-bottom: 30px;
+            font-size: 36px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            text-align: center;
         }
 
         table {
-            width: 80%;
+            width: 100%;
             border-collapse: collapse;
-            margin-bottom: 30px;
+            margin-top: 20px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            background-color: #fff;
         }
 
         th, td {
@@ -40,44 +72,56 @@
         th {
             background-color: #007bff;
             color: #fff;
+            font-weight: 600;
         }
 
         td {
             background-color: #fff;
             color: #555;
         }
+
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
     </style>
 </head>
+
 <body>
 
-    <h2>{% trans "Livestock Details" %}</h2>
+    <div class="container">
+        <!-- Botón para regresar a la lista de ganado -->
+        <a href="{% url 'app:livestock_list' %}" class="back-button">{% trans "Go Back to Livestock List" %}</a>
 
-    <table border="1">
-        <tr>
-            <th>{% trans "Livestock ID" %}</th>
-            <td>{{ livestock.livestock_id }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Farm" %}</th>
-            <td>{{ livestock.farm.farm_name }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Livestock Type" %}</th>
-            <td>{{ livestock.livestock_type }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Quantity" %}</th>
-            <td>{{ livestock.quantity }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Health Status" %}</th>
-            <td>{{ livestock.health_status }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Notes" %}</th>
-            <td>{{ livestock.notes }}</td>
-        </tr>
-    </table>
+        <h2>{% trans "Livestock Details" %}</h2>
+
+        <table>
+            <tr>
+                <th>{% trans "Livestock ID" %}</th>
+                <td>{{ livestock.livestock_id }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Farm" %}</th>
+                <td>{{ livestock.farm.farm_name }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Livestock Type" %}</th>
+                <td>{{ livestock.livestock_type }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Quantity" %}</th>
+                <td>{{ livestock.quantity }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Health Status" %}</th>
+                <td>{{ livestock.health_status }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Notes" %}</th>
+                <td>{{ livestock.notes }}</td>
+            </tr>
+        </table>
+    </div>
 
 </body>
+
 </html>

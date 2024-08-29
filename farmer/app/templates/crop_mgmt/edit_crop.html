@@ -17,17 +17,43 @@
             height: 100vh;
         }
 
-        h2 {
+        .container {
+            width: 80%;
+            max-width: 600px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             text-align: center;
+            text-decoration: none;
+            align-self: flex-start; /* Aligns the button to the left */
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        h2 {
             color: #343a40;
             margin-bottom: 30px;
-            font-size:35px;
+            font-size: 28px;
         }
 
         form {
-            width: 80%;
+            width: 100%;
             max-width: 500px;
-            margin: 0 auto;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
@@ -38,7 +64,7 @@
             display: block;
             margin-bottom: 8px;
             color: #000000;
-            font-weight:bold;
+            font-weight: bold;
         }
 
         input {
@@ -68,26 +94,31 @@
 </head>
 <body>
 
-    <h2>{% trans "Edit Crop Details" %}</h2>
+    <div class="container">
+        <!-- Botón para regresar a la lista de cultivos -->
+        <a href="{% url 'app:crop_list' %}" class="back-button">{% trans "Go Back to Crop List" %}</a>
 
-    <form method="post" action="{% url 'app:edit_crop' crop.crop_id %}">
-        {% csrf_token %}
-        
-        <!-- Display form errors -->
-        {% if crop_form.errors %}
-            <div class="alert alert-danger">
-                <strong>{% trans "Error(s)" %}:</strong>
-                <ul>
-                    {% for error in crop_form.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
+        <h2>{% trans "Edit Crop Details" %}</h2>
 
-        {{ crop_form.as_p }}
-        <button type="submit">{% trans "Update" %}</button>
-    </form>
+        <form method="post" action="{% url 'app:edit_crop' crop.crop_id %}">
+            {% csrf_token %}
+            
+            <!-- Display form errors -->
+            {% if crop_form.errors %}
+                <div class="alert alert-danger">
+                    <strong>{% trans "Error(s)" %}:</strong>
+                    <ul>
+                        {% for error in crop_form.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            {{ crop_form.as_p }}
+            <button type="submit">{% trans "Update" %}</button>
+        </form>
+    </div>
 
 </body>
 </html>

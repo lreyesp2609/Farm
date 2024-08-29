@@ -3,6 +3,7 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,6 +24,7 @@
             height: 100vh;
             flex-direction: column;
             text-align: center;
+            position: relative; /* Ensure the button can be positioned absolutely */
         }
 
         body::before {
@@ -32,7 +34,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('{% static "log.jpg" %}'); 
+            background-image: url('{% static "log.jpg" %}');
             background-size: cover;
             background-position: center;
             filter: blur(5px); /* Apply the blur effect */
@@ -86,9 +88,33 @@
         button:hover {
             background-color: #2980b9;
         }
+
+        .back-button {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background-color: #6c757d;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
     </style>
 </head>
+
 <body>
+    <a href="{% url 'app:login_page' %}" class="back-button">{% trans "Back to Login" %}</a>
+
     <h2>{% trans "Sign Up" %}</h2>
     <form method="post" action="{% url 'app:signup' %}">
         {% csrf_token %}
@@ -96,4 +122,5 @@
         <button type="submit">{% trans "Sign Up" %}</button>
     </form>
 </body>
+
 </html>

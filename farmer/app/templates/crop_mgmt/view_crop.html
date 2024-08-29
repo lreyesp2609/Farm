@@ -17,16 +17,42 @@
             height: 100vh;
         }
 
-        h2 {
+        .container {
+            width: 80%;
+            max-width: 800px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             text-align: center;
+            text-decoration: none;
+            align-self: flex-start; /* Aligns the button to the left */
+            margin-bottom: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        h2 {
             color: #343a40;
             margin-bottom: 30px;
+            font-size: 28px;
         }
 
         table {
-            width: 80%;
-            max-width: 600px;
-            margin: 0 auto;
+            width: 100%;
             border-collapse: collapse;
             background-color: #fff;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
@@ -53,38 +79,43 @@
 </head>
 <body>
 
-    <h2>{% trans "Crop Details" %}</h2>
+    <div class="container">
+        <!-- Botón para regresar a la lista de cultivos -->
+        <a href="{% url 'app:crop_list' %}" class="back-button">{% trans "Go Back" %}</a>
 
-    <table border="1">
-        <tr>
-            <th>{% trans "Crop ID" %}</th>
-            <td>{{ crop.crop_id }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Farm" %}</th>
-            <td>{{ crop.farm.farm_name }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Crop Name" %}</th>
-            <td>{{ crop.crop_name }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Planting Date" %}</th>
-            <td>{{ crop.planting_date }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Harvesting Date" %}</th>
-            <td>{{ crop.harvesting_date }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Yield" %}</th>
-            <td>{{ crop.yield_amount }}</td>
-        </tr>        
-        <tr>
-            <th>{% trans "Notes" %}</th>
-            <td>{{ crop.notes }}</td>
-        </tr>
-    </table>
+        <h2>{% trans "Crop Details" %}</h2>
+
+        <table border="1">
+            <tr>
+                <th>{% trans "Crop ID" %}</th>
+                <td>{{ crop.crop_id }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Farm" %}</th>
+                <td>{{ crop.farm.farm_name }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Crop Name" %}</th>
+                <td>{{ crop.crop_name }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Planting Date" %}</th>
+                <td>{{ crop.planting_date }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Harvesting Date" %}</th>
+                <td>{{ crop.harvesting_date }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Yield" %}</th>
+                <td>{{ crop.yield_amount }}</td>
+            </tr>        
+            <tr>
+                <th>{% trans "Notes" %}</th>
+                <td>{{ crop.notes }}</td>
+            </tr>
+        </table>
+    </div>
 
 </body>
 </html>

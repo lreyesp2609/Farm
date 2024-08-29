@@ -91,25 +91,33 @@ def dashboard_view(request):
 
 #--------------------------------------------------------------------
 
+@never_cache
 def farm_list(request):
-    farms = Farm.objects.all()
+    farms = Farm.objects.filter(farmer__user=request.user)
     return render(request, 'farm_mgmt/farm_list.html', {'farms': farms})
 
 def view_farm(request, farm_id):
     farm = get_object_or_404(Farm, farm_id=farm_id)
     return render(request, 'farm_mgmt/view_farm.html', {'farm': farm})
 
+@never_cache
 def add_farm(request):
     if request.method == 'POST':
         farm_form = FarmForm(request.POST)
         if farm_form.is_valid():
             farm = farm_form.save(commit=False)
-            farm.farmer = request.user.farmer  # Assign the current user's farmer profile to the farm
+            farm.farmer = request.user.farmer
             farm.save()
             return redirect('app:farm_list')
     else:
         farm_form = FarmForm()
-    return render(request, 'farm_mgmt/add_page.html', {'farm_form': farm_form})     
+
+    response = render(request, 'farm_mgmt/add_page.html', {'farm_form': farm_form})
+    response['Cache-Control'] = 'no-cache, no-store, must-revalidate'
+    response['Pragma'] = 'no-cache'
+    response['Expires'] = '0'
+    return response
+
 
 def edit_farm(request, farm_id):
     farm = get_object_or_404(Farm, farm_id=farm_id)
@@ -232,21 +240,11 @@ def add_expense(request):
         expense_form = ExpenseForm(request.POST, farmer=request.user.farmer)
         if expense_form.is_valid():
             expense = expense_form.save(commit=False)
-
-            # Retrieve the selected farm name from the form
             farm_name = expense_form.cleaned_data['farm_name']
-
-            # Get the corresponding farm object
             farm = get_object_or_404(Farm, farmer=request.user.farmer, farm_name=farm_name)
-
-            # Set the farm field
             expense.farm = farm
-
-            # Set the farmer field
             expense.farmer = request.user.farmer
-
             expense.save()
-
             messages.success(request, 'Expense added successfully!')
             return redirect('app:expense_list')
         else:

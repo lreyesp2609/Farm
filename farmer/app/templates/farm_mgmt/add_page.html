@@ -1,54 +1,82 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans "Farm Management - Add Farm" %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            max-width: 600px;
-            width: 100%;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
             background-color: #fff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            display: flex;
-            flex-direction: column; /* Align children vertically */
-            align-items: center; /* Center-align children horizontally */
-            margin: 0 auto; /* Center the form horizontally */
+            width: 100%;
+            max-width: 600px;
+            position: relative;
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-align: center;
+            text-decoration: none;
+            position: absolute;
+            top: -10px;
+            left: -10px;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
         }
 
         h2 {
             text-align: center;
             color: #343a40;
             margin-bottom: 30px;
-            font-size:35px;
+            font-size: 32px;
+            font-weight: 600;
         }
 
         form {
-            max-width: 600px;
             width: 100%;
-            background-color: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
         }
 
         label {
             display: block;
-            margin-bottom: 15px;
-            color: #000000;
-            font-weight:bold;
-            font-size:20px;
+            margin-bottom: 10px;
+            color: #343a40;
+            font-weight: 600;
+            font-size: 18px;
         }
 
         input {
             width: 100%;
-            padding: 15px;
+            padding: 12px 15px;
             margin-bottom: 20px;
             box-sizing: border-box;
-            border: 2px solid #ccc;
+            border: 2px solid #ced4da;
             border-radius: 8px;
             font-size: 16px;
         }
@@ -62,11 +90,13 @@
             cursor: pointer;
             width: 100%;
             font-size: 18px;
-            transition: background-color 0.3s ease-in-out;
+            font-weight: 600;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
         }
 
         button:hover {
             background-color: #0056b3;
+            box-shadow: 0 4px 8px rgba(0, 123, 255, 0.3);
         }
 
         .alert {
@@ -75,29 +105,39 @@
             padding: 15px;
             border-radius: 8px;
             margin-bottom: 20px;
+            font-weight: 600;
         }
     </style>
 </head>
+
 <body>
-    <h2>{% trans "Add Farm Details" %}</h2>
 
-    <form method="post" action="{% url 'app:add_farm' %}">
-        {% csrf_token %}
-        
-        <!-- Display form errors -->
-        {% if farm_form.errors %}
-            <div class="alert">
-                <strong>{% trans "Error(s)" %}:</strong>
-                <ul>
-                    {% for error in farm_form.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
-            </div>
-        {% endif %}
+    <div class="container">
+        <!-- Botón para retroceder -->
+        <a href="{% url 'app:farm_list' %}" class="back-button">{% trans "Go Back" %}</a>
 
-        {{ farm_form.as_p }}
-        <button type="submit">{% trans "Submit" %}</button>
-    </form>
+        <h2>{% trans "Add Farm Details" %}</h2>
+
+        <form method="post" action="{% url 'app:add_farm' %}">
+            {% csrf_token %}
+            
+            <!-- Display form errors -->
+            {% if farm_form.errors %}
+                <div class="alert">
+                    <strong>{% trans "Error(s)" %}:</strong>
+                    <ul>
+                        {% for error in farm_form.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+
+            {{ farm_form.as_p }}
+            <button type="submit">{% trans "Submit" %}</button>
+        </form>
+    </div>
+
 </body>
+
 </html>

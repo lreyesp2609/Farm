@@ -1,14 +1,16 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% trans "Expense Details" %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
     <style>
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f4f4f4;
+            font-family: 'Poppins', sans-serif;
+            background-color: #f8f9fa;
             margin: 0;
             padding: 20px;
             display: flex;
@@ -17,76 +19,105 @@
             min-height: 100vh;
         }
 
-        h2 {
+        .container {
+            width: 100%;
+            max-width: 800px;
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             text-align: center;
+            text-decoration: none;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+        }
+
+        h2 {
             color: #343a40;
+            font-size: 36px;
+            font-weight: 600;
             margin-bottom: 30px;
+            text-align: center;
         }
 
         table {
-            width: 80%;
-            max-width: 600px;
-            margin-top: 20px;
+            width: 100%;
             border-collapse: collapse;
+            margin-top: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
-            background-color: #fff;
+            overflow: hidden;
             border-radius: 8px;
+            background-color: #fff;
         }
 
         th, td {
             border: 1px solid #ddd;
-            padding: 15px;
+            padding: 16px;
             text-align: left;
+            font-size: 16px;
         }
 
         th {
             background-color: #007bff;
             color: #fff;
+            font-weight: bold;
         }
 
-        td {
+        tr:nth-child(even) {
             background-color: #f9f9f9;
         }
 
         a {
-            text-decoration: none;
             color: #007bff;
+            text-decoration: none;
             transition: color 0.3s ease-in-out;
+            font-weight: 600;
         }
 
         a:hover {
             color: #0056b3;
         }
-
-        .back-link {
-            margin-top: 20px;
-        }
     </style>
 </head>
+
 <body>
 
-    <h2>{% trans "Expense Details" %}</h2>
+    <div class="container">
+        <!-- Botón para retroceder -->
+        <a href="{% url 'app:expense_list' %}" class="back-button">{% trans "Back to Expense List" %}</a>
 
-    <table border="1">
-        <tr>
-            <th>{% trans "Expense ID" %}</th>
-            <td>{{ expense.expense_id }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Type" %}</th>
-            <td>{{ expense.expense_type }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Amount" %}</th>
-            <td>{{ expense.amount }}</td>
-        </tr>
-        <tr>
-            <th>{% trans "Description" %}</th>
-            <td>{{ expense.description }}</td>
-        </tr>
-    </table>
+        <h2>{% trans "Expense Details" %}</h2>
 
-    <a class="back-link" href="{% url 'app:expense_list' %}">&lt; {% trans "Back to Expense List" %}</a>
+        <table>
+            <tr>
+                <th>{% trans "Expense ID" %}</th>
+                <td>{{ expense.expense_id }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Type" %}</th>
+                <td>{{ expense.expense_type }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Amount" %}</th>
+                <td>{{ expense.amount }}</td>
+            </tr>
+            <tr>
+                <th>{% trans "Description" %}</th>
+                <td>{{ expense.description }}</td>
+            </tr>
+        </table>
+    </div>
 
 </body>
+
 </html>
