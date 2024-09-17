@@ -54,6 +54,23 @@ class CropForm(forms.ModelForm):
             'yield_amount': _('Yield Amount'),
             'notes': _('Notes'),
         }
+        widgets = {
+            'planting_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+            'harvesting_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        }
+        
+    def clean(self):
+        cleaned_data = super().clean()
+        planting_date = cleaned_data.get('planting_date')
+        harvesting_date = cleaned_data.get('harvesting_date')
+
+        # Verificar si las fechas están presentes
+        if planting_date and harvesting_date:
+            # Validar que la fecha de plantación no sea mayor que la fecha de cosecha
+            if planting_date > harvesting_date:
+                raise ValidationError("La fecha de plantación no puede ser mayor que la fecha de cosecha.")
+
+        return cleaned_data
 
 class LivestockForm(forms.ModelForm):
     farm = forms.ModelChoiceField(queryset=Farm.objects.all(), empty_label=_("Select a farm"))
@@ -101,6 +118,9 @@ class ExpenseForm(forms.ModelForm):
             'amount': _('Amount'),
             'description': _('Description'),
         }
+        widgets = {
+            'expense_date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
+        }
 
 class BudgetForm(forms.ModelForm):
     class Meta:
@@ -121,6 +141,9 @@ class SaleForm(forms.ModelForm):
             'date': _('Date'),
             'image': _('Image'),
             'farm': _('Farm'),
+        }
+        widgets = {
+            'date': forms.DateInput(attrs={'type': 'date', 'class': 'form-control'}),
         }
 
     def __init__(self, *args, **kwargs):
