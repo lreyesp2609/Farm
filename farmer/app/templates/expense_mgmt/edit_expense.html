@@ -20,23 +20,39 @@
             position: relative;
         }
 
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            position: relative;
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
         .back-link {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            text-decoration: none;
-            background-color: #6c757d;
+            background-color: #dc3545; /* Rojo para el botón Cancel */
             color: #fff;
-            padding: 10px 15px;
+            padding: 12px;
+            border: none;
             border-radius: 8px;
+            cursor: pointer;
             font-size: 16px;
             font-weight: 600;
-            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-decoration: none;
+            transition: background-color 0.3s ease-in-out;
+            width: 48%;
+            text-align: center;
         }
 
         .back-link:hover {
-            background-color: #5a6268;
-            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+            background-color: #c82333; /* Rojo más oscuro para el hover */
         }
 
         h2 {
@@ -48,13 +64,7 @@
         }
 
         form {
-            width: 80%;
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
 
         label {
@@ -82,7 +92,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            width: 100%;
+            width: 48%;
             font-size: 16px;
             font-weight: 600;
             transition: background-color 0.3s ease-in-out;
@@ -105,28 +115,33 @@
 
 <body>
 
-    <a href="{% url 'app:expense_list' %}" class="back-link">{% trans "Back to Expense List" %}</a>
+    <div class="container">
+        <!-- Botón para retroceder -->
+        <h2>{% trans "Edit Expense" %}</h2>
 
-    <h2>{% trans "Edit Expense" %}</h2>
+        <form method="post" action="{% url 'app:edit_expense' expense.expense_id %}">
+            {% csrf_token %}
 
-    <form method="post" action="{% url 'app:edit_expense' expense.expense_id %}">
-        {% csrf_token %}
+            <!-- Display form errors -->
+            {% if form.errors %}
+                <div class="alert">
+                    <strong>{% trans "Error(s)" %}:</strong>
+                    <ul>
+                        {% for error in form.errors %}
+                            <li>{{ error }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
 
-        <!-- Display form errors -->
-        {% if form.errors %}
-            <div class="alert">
-                <strong>{% trans "Error(s)" %}:</strong>
-                <ul>
-                    {% for error in form.errors %}
-                        <li>{{ error }}</li>
-                    {% endfor %}
-                </ul>
+            {{ form.as_p }}
+            
+            <div class="buttons-container">
+                <button type="submit">{% trans "Update" %}</button>
+                <a class="back-link" href="{% url 'app:expense_list' %}">{% trans "Cancel" %}</a>
             </div>
-        {% endif %}
-
-        {{ form.as_p }}
-        <button type="submit">{% trans "Update" %}</button>
-    </form>
+        </form>
+    </div>
 
 </body>
 

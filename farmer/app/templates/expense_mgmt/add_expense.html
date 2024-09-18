@@ -20,24 +20,38 @@
             position: relative;
         }
 
+        .container {
+            width: 80%;
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
         .back-button {
-            position: absolute;
-            top: 20px;
-            left: 20px;
-            background-color: #6c757d;
+            background-color: #dc3545; /* Rojo para el botón Cancel */
             color: #fff;
-            padding: 10px 20px;
+            padding: 12px;
             border: none;
             border-radius: 8px;
             cursor: pointer;
             font-size: 16px;
             font-weight: 600;
             text-decoration: none;
+            text-align: center;
             transition: background-color 0.3s ease-in-out;
+            width: 48%;
         }
 
         .back-button:hover {
-            background-color: #5a6268;
+            background-color: #c82333; /* Rojo más oscuro para el hover */
         }
 
         h2 {
@@ -49,13 +63,7 @@
         }
 
         form {
-            width: 80%;
-            max-width: 600px;
-            margin: 0 auto;
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            width: 100%;
         }
 
         label {
@@ -83,7 +91,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            width: 100%;
+            width: 48%;
             font-size: 16px;
             font-weight: 600;
             transition: background-color 0.3s ease-in-out;
@@ -105,61 +113,64 @@
 </head>
 
 <body>
-    <a class="back-button" href="{% url 'app:expense_list' %}">{% trans "Go Back to Expense List" %}</a>
+    <div class="container">
+        <!-- Botón para retroceder -->
+        <h2>{% trans "Add Expense" %}</h2>
 
-    <h2>{% trans "Add Expense" %}</h2>
-
-    <form method="post" action="{% url 'app:add_expense' %}">
-        {% csrf_token %}
-        
-        <!-- Display form errors -->
-        {% if expense_form.errors %}
-            <div class="alert">
-                <strong>{% trans "Error(s)" %}:</strong>
-                <ul>
-                    {% for field in expense_form %}
-                        {% for error in field.errors %}
-                            <li>{{ error }}</li>
+        <form method="post" action="{% url 'app:add_expense' %}">
+            {% csrf_token %}
+            
+            <!-- Display form errors -->
+            {% if expense_form.errors %}
+                <div class="alert">
+                    <strong>{% trans "Error(s)" %}:</strong>
+                    <ul>
+                        {% for field in expense_form %}
+                            {% for error in field.errors %}
+                                <li>{{ error }}</li>
+                            {% endfor %}
                         {% endfor %}
-                    {% endfor %}
-                </ul>
+                    </ul>
+                </div>
+            {% endif %}
+
+            <!-- Display form fields -->
+            <div>
+                <label for="{{ expense_form.farm_name.id_for_label }}">{% trans "Farm Name" %}:</label>
+                {{ expense_form.farm_name }}
+                {{ expense_form.farm_name.errors }}
             </div>
-        {% endif %}
+            
+            <div>
+                <label for="{{ expense_form.expense_type.id_for_label }}">{% trans "Expense Type" %}:</label>
+                {{ expense_form.expense_type }}
+                {{ expense_form.expense_type.errors }}
+            </div>
 
-        <!-- Display form fields -->
-        <div>
-            <label for="{{ expense_form.farm_name.id_for_label }}">{% trans "Farm Name" %}:</label>
-            {{ expense_form.farm_name }}
-            {{ expense_form.farm_name.errors }}
-        </div>
-        
-        <div>
-            <label for="{{ expense_form.expense_type.id_for_label }}">{% trans "Expense Type" %}:</label>
-            {{ expense_form.expense_type }}
-            {{ expense_form.expense_type.errors }}
-        </div>
+            <div>
+                <label for="{{ expense_form.expense_date.id_for_label }}">{% trans "Expense Date" %}:</label>
+                {{ expense_form.expense_date }}
+                {{ expense_form.expense_date.errors }}
+            </div>
 
-        <div>
-            <label for="{{ expense_form.expense_date.id_for_label }}">{% trans "Expense Date" %}:</label>
-            {{ expense_form.expense_date }}
-            {{ expense_form.expense_date.errors }}
-        </div>
+            <div>
+                <label for="{{ expense_form.amount.id_for_label }}">{% trans "Amount" %}:</label>
+                {{ expense_form.amount }}
+                {{ expense_form.amount.errors }}
+            </div>
 
-        <div>
-            <label for="{{ expense_form.amount.id_for_label }}">{% trans "Amount" %}:</label>
-            {{ expense_form.amount }}
-            {{ expense_form.amount.errors }}
-        </div>
+            <div>
+                <label for="{{ expense_form.description.id_for_label }}">{% trans "Description" %}:</label>
+                {{ expense_form.description }}
+                {{ expense_form.description.errors }}
+            </div>
 
-        <div>
-            <label for="{{ expense_form.description.id_for_label }}">{% trans "Description" %}:</label>
-            {{ expense_form.description }}
-            {{ expense_form.description.errors }}
-        </div>
-
-        <button type="submit">{% trans "Submit" %}</button>
-    </form>
-
+            <div class="buttons-container">
+                <button type="submit">{% trans "Submit" %}</button>
+                <a class="back-button" href="{% url 'app:expense_list' %}">{% trans "Cancel" %}</a>
+            </div>
+        </form>
+    </div>
 </body>
 
 </html>
