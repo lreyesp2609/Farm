@@ -225,7 +225,7 @@ msgstr "Error(es)"
 
 #: .\app\templates\crop_mgmt\add_crop.html:109
 #: .\app\templates\expense_mgmt\add_expense.html:123
-#: .\app\templates\farm_mgmt\add_page.html:100
+#: .\app\templates\farm_mgmt\add_page.html:141
 #: .\app\templates\livestock_mgmt\add_livestock.html:109
 #: .\app\templates\register.html:73
 msgid "Submit"
@@ -694,3 +694,7 @@ msgstr "Kannada"
 #: .\farmer\settings.py:127
 msgid "Spanish"
 msgstr "Español"
+
+#: .\app\templates\farm_mgmt\add_page.html:142
+msgid "Cancel"
+msgstr "Cancelar"

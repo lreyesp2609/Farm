@@ -29,6 +29,12 @@
             position: relative;
         }
 
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
         .back-button {
             background-color: #6c757d;
             color: #fff;
@@ -40,13 +46,12 @@
             transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             text-align: center;
             text-decoration: none;
-            position: absolute;
-            top: -10px;
-            left: -10px;
+            width: 48%;
+            background-color: red;
         }
 
         .back-button:hover {
-            background-color: #5a6268;
+            background-color: rgb(210, 0, 0);
             box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
         }
 
@@ -87,7 +92,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            width: 100%;
+            width: 48%;
             font-size: 18px;
             font-weight: 600;
             transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
@@ -111,9 +116,6 @@
 <body>
 
     <div class="container">
-        <!-- Botón para retroceder -->
-        <a href="{% url 'app:farm_list' %}" class="back-button">{% trans "Go Back" %}</a>
-
         <h2>{% trans "Edit Farm Details" %}</h2>
 
         <form method="post" action="{% url 'app:edit_farm' farm.farm_id %}">
@@ -132,7 +134,11 @@
             {% endif %}
 
             {{ form.as_p }}
-            <button type="submit">{% trans "Update" %}</button>
+
+            <div class="buttons-container">
+                <button type="submit">{% trans "Update" %}</button>
+                <a href="{% url 'app:farm_list' %}" class="back-button">{% trans "Cancel" %}</a>
+            </div>
         </form>
     </div>
 
