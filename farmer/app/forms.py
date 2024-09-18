@@ -42,6 +42,12 @@ class FarmForm(forms.ModelForm):
             'description': _('Description'),
         }
 
+    def clean_total_acres(self):
+        total_acres = self.cleaned_data.get('total_acres')
+        if total_acres < 0:
+            raise forms.ValidationError(_('Total acres cannot be negative.'))
+        return total_acres
+
 class CropForm(forms.ModelForm):
     farm = forms.ModelChoiceField(queryset=Farm.objects.all(), empty_label=_("Select a farm"))
     class Meta:
