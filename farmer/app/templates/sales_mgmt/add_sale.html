@@ -1,6 +1,7 @@
 {% load i18n %}
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,8 +26,16 @@
             position: relative;
         }
 
-        .back-button {
+        .buttons-container {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+        }
+
+        .back-button,
+        .submit-button {
             background-color: #6c757d;
+            /* Gris para el botón Cancel */
             color: #fff;
             padding: 10px 15px;
             border: none;
@@ -36,14 +45,27 @@
             transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             text-align: center;
             text-decoration: none;
-            position: absolute;
-            top: -10px;
-            left: -10px;
+            width: 48%;
+        }
+
+        .back-button {
+            background-color: #dc3545;
+            /* Rojo para el botón Cancel */
         }
 
         .back-button:hover {
-            background-color: #5a6268;
-            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
+            background-color: #c82333;
+            /* Rojo más oscuro para el hover */
+        }
+
+        .submit-button {
+            background-color: #007bff;
+            /* Azul para el botón Add Sale */
+        }
+
+        .submit-button:hover {
+            background-color: #0056b3;
+            /* Azul más oscuro para el hover */
         }
 
         h1 {
@@ -71,7 +93,8 @@
             font-size: 16px;
         }
 
-        input, select {
+        input,
+        select {
             width: 100%;
             padding: 12px 15px;
             margin-bottom: 20px;
@@ -80,6 +103,11 @@
             font-size: 16px;
             color: #333;
             background-color: #f9f9f9;
+            box-sizing: border-box;
+        }
+
+        input[type="date"] {
+            font-size: 16px;
         }
 
         button {
@@ -89,7 +117,7 @@
             border: none;
             border-radius: 8px;
             cursor: pointer;
-            width: 100%;
+            width: 48%;
             font-size: 18px;
             transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
             font-weight: 600;
@@ -115,7 +143,8 @@
         }
 
         select::after {
-            content: '\25BC'; /* Unicode character for down arrow */
+            content: '\25BC';
+            /* Unicode character for down arrow */
             position: absolute;
             top: 50%;
             right: 15px;
@@ -159,33 +188,36 @@
         }
     </style>
 </head>
+
 <body>
 
     <div class="container">
-        <!-- Botón para retroceder -->
-        <a href="{% url 'app:dashboard' %}" class="back-button">{% trans "Go Back" %}</a>
-
         <h1>{% trans "Add Sale" %}</h1>
 
         <form method="post" enctype="multipart/form-data">
             {% csrf_token %}
-            
+
             <!-- Display form errors -->
             {% if form.errors %}
-                <div class="alert">
-                    <strong>{% trans "Error(s)" %}:</strong>
-                    <ul>
-                        {% for error in form.errors %}
-                            <li>{{ error }}</li>
-                        {% endfor %}
-                    </ul>
-                </div>
+            <div class="alert">
+                <strong>{% trans "Error(s)" %}:</strong>
+                <ul>
+                    {% for error in form.errors %}
+                    <li>{{ error }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
             {% endif %}
 
             {{ form.as_p }}
-            <button type="submit">{% trans "Add Sale" %}</button>
+
+            <div class="buttons-container">
+                <button type="submit" class="submit-button">{% trans "Add Sale" %}</button>
+                <a href="{% url 'app:dashboard' %}" class="back-button">{% trans "Cancel" %}</a>
+            </div>
         </form>
     </div>
 
 </body>
+
 </html>

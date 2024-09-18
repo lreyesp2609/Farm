@@ -87,18 +87,40 @@
         a:hover {
             background-color: #218838;
         }
+
         @media only screen and (max-width: 600px) {
             form {
                 max-width: 100%;
             }
+
             table {
                 font-size: 14px;
             }
+        }
+
+        .back-button {
+            background-color: #6c757d;
+            color: #fff;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+            text-align: center;
+            text-decoration: none;
+            align-self: flex-start;
+        }
+
+        .back-button:hover {
+            background-color: #5a6268;
+            box-shadow: 0 5px 15px rgba(108, 117, 125, 0.3);
         }
     </style>
 </head>
 
 <body>
+    <a href="{% url 'app:expense_summary' %}" class="back-button">{% trans "Go Back" %}</a>
 
     <h1>{% trans "Expense Report" %}</h1>
 
@@ -108,7 +130,7 @@
         <select name="expense_type">
             <!-- Populate expense types from the database -->
             {% for expense_type in expense_types %}
-                <option value="{{ expense_type }}">{{ expense_type }}</option>
+            <option value="{{ expense_type }}">{{ expense_type }}</option>
             {% endfor %}
         </select>
 
@@ -116,7 +138,7 @@
         <select name="farm_id">
             <!-- Populate farms from the database -->
             {% for farm_id, farm_name in farms %}
-                <option value="{{ farm_id }}">{{ farm_name }}</option>
+            <option value="{{ farm_id }}">{{ farm_name }}</option>
             {% endfor %}
         </select>
 
@@ -145,15 +167,15 @@
         </thead>
         <tbody>
             {% for expense in expenses %}
-                <tr>
-                    <td>{{ expense.expense_id }}</td>
-                    <td>{{ expense.expense_date }}</td>
-                    <td>{{ expense.amount }}</td>
-                    <td>{{ expense.expense_type }}</td>
-                    <td>{{ expense.description }}</td>
-                    <td>{{ expense.farm.farm_name }}</td>
-                    <td><a href="{% url 'app:set_budget' expense_id=expense.expense_id %}">{% trans "Set Budget" %}</a></td>
-                </tr>
+            <tr>
+                <td>{{ expense.expense_id }}</td>
+                <td>{{ expense.expense_date }}</td>
+                <td>{{ expense.amount }}</td>
+                <td>{{ expense.expense_type }}</td>
+                <td>{{ expense.description }}</td>
+                <td>{{ expense.farm.farm_name }}</td>
+                <td><a href="{% url 'app:set_budget' expense_id=expense.expense_id %}">{% trans "Set Budget" %}</a></td>
+            </tr>
             {% endfor %}
         </tbody>
     </table>
